@@ -10,27 +10,7 @@ describe('See if the tests are running', function() {
       "name": "Blake D",
       "travelerType": "history buff"
     }
-    tripInfo = 
-        [{
-          "id": 1,
-          "userID": 6,
-          "destinationID": 49,
-          "date": "2019/09/16",
-        },
-        {
-          "id": 1,
-          "userID": 32,
-          "destinationID": 49,
-          "date": "2019/09/16",
-        },
-        {
-          "id": 1,
-          "userID": 45,
-          "destinationID": 49,
-          "date": "2019/09/16",
-        }]
     traveler = new Traveler(travelerInfo);
-
   });
 
   it('Should be a function', () => {
@@ -50,5 +30,5 @@ describe('See if the tests are running', function() {
     let testTraveler = new Traveler(travelerInfo)
     expect(testTraveler.userInfo).to.equal(null)
   });
-  
+
 });
