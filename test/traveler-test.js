@@ -1,11 +1,17 @@
 import chai from 'chai';
 import Traveler from '../src/classes/traveler';
 const expect = chai.expect;
-let traveler;
+let traveler, travelerInfo;
 
 describe('See if the tests are running', function() {
+    
   beforeEach(() => {
-    traveler = new Traveler();
+    travelerInfo = {
+      "id": 6,
+      "name": "Blake D",
+      "travelerType": "history buff"
+    }
+    traveler = new Traveler(travelerInfo);
   });
 
   it('Should be a function', () => {
@@ -14,5 +20,19 @@ describe('See if the tests are running', function() {
 
   it('Should be an instance of Traveler', () => {
     expect(traveler).to.be.an.instanceof(Traveler)
+  });
+
+  it('Should store a specific travelers info', () => {
+    expect(traveler.userInfo).to.equal(travelerInfo)
+  });
+
+  it('Should not store bad info', () => {
+    let badInfo = {
+      "id": '6',
+      "name": 43,
+      "travelerType": 52
+    }
+    let testTraveler = new Traveler(badInfo)
+    expect(testTraveler.userInfo).to.equal(null)
   });
 });
