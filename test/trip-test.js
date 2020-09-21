@@ -31,9 +31,26 @@ describe.only ('See if the tests are running', function() {
     expect(trip.year).to.be.equal('2020')
   });
 
-  it('Should set trip status using time module', () => {
+  it('Should evaluate present status correctly', () => {
     expect(trip.tripStatus).to.be.equal('present')
   });
 
+  it('Should evaluate past status correctly', () => {
+    tripInfo.date = '2020/07/20'
+    let newTrip = new Trip(tripInfo)
+    expect(newTrip.tripStatus).to.be.equal('past')
+  });
+
+  it('Should evaluate present status correctly', () => {
+    tripInfo.date = '2020/11/20'
+    let newTrip = new Trip(tripInfo)
+    expect(newTrip.tripStatus).to.be.equal('upcoming')
+  });
+
+  it('Should evaluate pending status correctly', () => {
+    tripInfo.status = 'pending'
+    let newTrip = new Trip(tripInfo)
+    expect(newTrip.tripStatus).to.be.equal('pending')
+  });
 
 });
