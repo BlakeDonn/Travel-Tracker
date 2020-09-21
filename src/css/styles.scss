@@ -27,11 +27,15 @@
 
     @mixin cardGrid{
         display: grid;
-        align-items: center;
         grid-template-columns: auto;
+        justify-content: center;
     }
     @mixin cardStyle {
         background-color: $quaternary-color;
+        align-self: center;
+        border-radius: 25px;
+        height: 12.50vh;
+        width: 25vw;
     }
   @mixin rightStyle {
       background-color: $secondary-color;
