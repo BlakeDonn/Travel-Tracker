@@ -4,10 +4,17 @@ import travelFetch from './requests/apis';
 import time from './scripts/time';
 import './images/turing-logo.png'
 
+let startUp = () => {
+  let userTrips;
+  let destiCost;
+  travelFetch.dashboardInfo(5)
+    .then(promises => Promise.all(promises.map(response => response.json())))  
+    .then(values => userTrips = values[1].trips.filter(x => x.userID === values[0].id))
+    .then(values => travelFetch.destinationInfo(userTrips.map(x => x.destinationID)))
+    .then(values => console.log(values))
+    .then(value => console.log(userTrips))
+}
 
-travelFetch.dashboardInfo(5)   
-  .then(promises => Promise.all(promises.map(response => response.json())))  
-  .then(values => console.log(values))
-console.log('This is the JavaScript entry file - your code begins here.');
-let currentDate = new Date()
-console.log(time.daysFromDate(currentDate, 1))
+startUp()
+
+  
