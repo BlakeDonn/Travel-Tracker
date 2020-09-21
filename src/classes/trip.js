@@ -1,7 +1,9 @@
 
 class Trip {
   constructor(tripInfo) {
-    this.userInfo = 1;
+    this.tripLocation = tripInfo.destinyID;
+    // this.
+
   }
 }
 export default Trip

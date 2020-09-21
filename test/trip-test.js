@@ -1,5 +1,6 @@
 import chai from 'chai';
 import Trip from '../src/classes/trip';
+import time from '../src/scripts/time';
 const expect = chai.expect;
 let trip, tripInfo;
 
@@ -23,6 +24,13 @@ describe('See if the tests are running', function() {
   });
 
   it('Should be an instance of Trip', () => {
+    expect(trip).to.be.an.instanceof(Trip)
+  });
+
+  it('Should evaluate trip status', () => {
+    let splitDate = tripInfo.date.split('/')
+    let tripDate = new Date(splitDate[0], splitDate[1] - 1, splitDate[2])
+    console.log(tripDate)
     expect(trip).to.be.an.instanceof(Trip)
   });
 
