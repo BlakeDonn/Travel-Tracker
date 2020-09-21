@@ -1,8 +1,31 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
+@import 'variables';
+@import 'styles';
 
+html {
+  @include maxSize;
+}
 body {
-  background: $primary-background;
+  @include maxSize;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background: $primary-color;
+}
+main {
+  @include mainGrid;
+  outline-color: green;
+  outline-style: solid;
+}
+header {
+  @include rightStyle;
+}
+footer {
+  @include rightStyle;
+}
+aside {
+  outline-color: blue;
+  outline-style: solid;
+}
+section {
+  @include rightStyle
 }
 
