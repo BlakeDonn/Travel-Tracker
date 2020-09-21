@@ -11,7 +11,7 @@ describe.only ('See if the tests are running', function() {
       "userID": 29,
       "destinationID": 35,
       "travelers": 3,
-      "date": "2020/06/29",
+      "date": "2020/09/20",
       "duration": 9,
       "status": "approved",
       "suggestedActivities": []
@@ -32,7 +32,7 @@ describe.only ('See if the tests are running', function() {
   });
 
   it('Should set trip status using time module', () => {
-    expect(trip.tripStatus).to.be.equal('past')
+    expect(trip.tripStatus).to.be.equal('present')
   });
 
 
