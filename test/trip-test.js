@@ -4,7 +4,7 @@ import time from '../src/scripts/time';
 const expect = chai.expect;
 let trip, tripInfo;
 
-describe.only ('See if the tests are running', function() {
+describe ('See if the tests are running', function() {
   beforeEach(() => {
     tripInfo = {
       "id": 6,
