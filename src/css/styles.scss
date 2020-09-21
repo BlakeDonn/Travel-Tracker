@@ -25,6 +25,14 @@
     "footer footer";
   }
 
+    @mixin cardGrid{
+        display: grid;
+        align-items: center;
+        grid-template-columns: auto;
+    }
+    @mixin cardStyle {
+        background-color: $quaternary-color;
+    }
   @mixin rightStyle {
       background-color: $secondary-color;
       margin: 15px;

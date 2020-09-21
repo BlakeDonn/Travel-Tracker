@@ -21,11 +21,16 @@ header {
 footer {
   @include rightStyle;
 }
+section {
+  @include rightStyle;
+  @include cardGrid;
+  .card{
+    @include cardStyle;
+  }
+}
 aside {
   outline-color: blue;
   outline-style: solid;
 }
-section {
-  @include rightStyle
-}
+
 
