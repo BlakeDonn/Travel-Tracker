@@ -12,7 +12,9 @@ const startUp = () => {
   dashboardFetch()
     .then(values => (userTrips = values, destinationFetch(values)))
     .then(values => destiTrips = values)
-  createTrips(userTrips, destiTrips)
+    .then(() => userTrips.sort((a, b) => a.destinationID - b.destinationID))
+    .then(() => createTrips(userTrips, destiTrips))
+    .then(value => console.log(value))
 }
 const dashboardFetch = () =>{
   return travelFetch.dashboardInfo(5)
@@ -23,6 +25,15 @@ const destinationFetch = (values) => {
   return travelFetch.destinationInfo(values.map(x => x.destinationID))
 }
 
+const createTrips = (userTrips, destiTrips) => {
+  return userTrips.reduce((acc, cur, i)=>{
+    let lodgingCost = cur.duration * destiTrips[i].estimatedLodgingCostPerDay
+    let flightCost = cur.travelers * destiTrips[i].estimatedFlightCostPerPerson
+    let price = lodgingCost + flightCost
+    acc.push(new Trip(cur, price, destiTrips[i]))
+    return acc
+  },[])
+}
 startUp()
 
   
