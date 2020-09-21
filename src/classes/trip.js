@@ -1,9 +1,9 @@
-import time from './scripts/time';
+import time from '../scripts/time';
 
 class Trip {
   constructor(tripInfo) {
     this.tripLocation = tripInfo.destinyID;
-    this.tripStatus = time.isBetween(tripInfo.status, tripInfo.date.split('/'), (tripInfo.date + tripInfo.duration).split('/'))
+    this.tripStatus = time.isBetween(tripInfo.status, tripInfo.date.split('/'), time.daysFromDate(tripInfo.date.split('/'), tripInfo.duration))
     this.year = tripInfo.date.split('/')[0]
   }
 }

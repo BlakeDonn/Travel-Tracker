@@ -4,7 +4,7 @@ import time from '../src/scripts/time';
 const expect = chai.expect;
 let trip, tripInfo;
 
-describe('See if the tests are running', function() {
+describe.only ('See if the tests are running', function() {
   beforeEach(() => {
     tripInfo = {
       "id": 6,
@@ -27,10 +27,12 @@ describe('See if the tests are running', function() {
     expect(trip).to.be.an.instanceof(Trip)
   });
 
+  it('Should set trip year on instantiation', () => {
+    expect(trip.year).to.be.equal('2020')
+  });
+
   it('Should set trip status using time module', () => {
-    let splitDate = tripInfo.date.split('/')
-    let tripDate = new Date(splitDate[0], splitDate[1] - 1, splitDate[2])
-    expect(time.isPrevious(tripDate)).to.be(true)
+    expect(trip.tripStatus).to.be.equal('past')
   });
 
 
