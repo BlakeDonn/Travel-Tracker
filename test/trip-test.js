@@ -27,11 +27,10 @@ describe('See if the tests are running', function() {
     expect(trip).to.be.an.instanceof(Trip)
   });
 
-  it('Should evaluate trip status', () => {
+  it('Should set trip status using time module', () => {
     let splitDate = tripInfo.date.split('/')
     let tripDate = new Date(splitDate[0], splitDate[1] - 1, splitDate[2])
-    console.log(tripDate)
-    expect(trip).to.be.an.instanceof(Trip)
+    expect(time.isPrevious(tripDate)).to.be(true)
   });
 
 
