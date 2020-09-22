@@ -15,11 +15,11 @@ const logIn = () => {
 const evaluateLogin = (username, password) => {
   if (password === "travel2020") {
     travelFetch.dashboardInfo(+username.split('r')[2], 1) 
-      .then(response => response.status === 200 ? response.json() : alert('invalidUsername'))
-      .then(value => startUp(value))
+      .then(response => response.status === 200 ? response.json() : alert('Invalid Username'))
+      .then(() => domUpdates.toggleHidden())
   }
   else {
-    alert('invalidPassword')
+    alert('Invalid Password')
   }
 }
 const startUp = (user) => {
