@@ -11,11 +11,13 @@ let domUpdates = {
         `)
     })
   },
-  populateYearPrice(trips) {
-    let total = trips.reduce((yearPrice, trip)=>{
-      return   yearPrice += trip.price
-    }, 0)
-    return total.toFixed(2)
+  populateYearPrice(obj) {
+    let footerElement = document.getElementById('yearly-cost-summary')
+    footerElement.insertAdjacentHTML("afterbegin", 
+      `<h2 id ="yearly-number-of-trips">You went on ${obj.tripAmount} trips this year!</h2>
+        <h2 id ="yearly-total-price">Total cost for all trips: ${obj.totalPrice}</h2>
+    `
+    )
   },
   addPlaceholder() {
 

@@ -37,8 +37,15 @@ const determineYears = (allTrips) =>  {
     return currentYear === trip.date.toString().split(' ',  4)[3] 
     || currentYear === trip.duration.toString().split(' ',  4)[3]
   })
-  yearMatches.length ? domUpdates.populateYearPrice(yearMatches) : domUpdates.addPlaceholder();
+  yearMatches ? calculateYearPrice(yearMatches) : domUpdates.addPlaceholder();
 }
+const calculateYearPrice = (trips) => {
+  let total = trips.reduce((yearPrice, trip)=>{
+    return   yearPrice += trip.price
+  }, 0)
+  domUpdates.populateYearPrice({tripAmount: trips.length, totalPrice: total.toFixed(2)})
+}
+
 startUp()
 
   
