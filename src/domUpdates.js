@@ -32,6 +32,7 @@ let domUpdates = {
     target1.insertAdjacentHTML("beforeend", 
       `<h3 id ="yearly-number-of-trips">Your estimated cost: ${total.toFixed(2)} (agency fee included)</h3`
     )
+    return price
   }
 }
 
