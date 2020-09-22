@@ -10,7 +10,16 @@ let domUpdates = {
             <h2 id ="destination">Where: ${trip.destination.location}</h3>
         `)
     })
-    console.log(trips)
+  },
+  populateYearPrice(obj) {
+    let footerElement = document.getElementById('yearly-cost-summary')
+    footerElement.insertAdjacentHTML("afterbegin", 
+      `<h2 id ="yearly-number-of-trips">You went on ${obj.tripAmount} trips this year!</h2>
+        <h2 id ="yearly-total-price">Total cost for all trips: ${obj.totalPrice}</h2>
+    `)
+  },
+  addPlaceholder() {
+
   }
 }
 
