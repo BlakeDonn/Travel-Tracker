@@ -32,8 +32,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "flatpickr": "^4.6.6",
-    "lightpick": "^1.6.2",
     "normalize-scss": "^7.0.1"
   }
 }

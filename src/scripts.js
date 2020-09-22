@@ -5,6 +5,7 @@ import domUpdates from './domUpdates';
 
 const startUp = () => {
   let userTrips, destiTrips, destiNames;
+  document.getElementById("destination-submit").addEventListener('click', postData)
   dashboardFetch()
     .then(values => (userTrips = values, destinationFetch(values)))
     .then(values => (destiTrips = values[1], destiNames = values[0]))
@@ -51,6 +52,12 @@ const calculateYearPrice = (trips) => {
   }, 0)
   total = total + ((10 / 100) * total)
   domUpdates.populateYearPrice({tripAmount: trips.length, totalPrice: total.toFixed(2)})
+}
+const postData = () =>{
+  let startDate = document.getElementById('start-date-input').value
+  let returnDate = document.getElementById('return-date-input').value
+  let travelerInput = document.getElementById('traveler-input').value
+  let destinationChoice = document.getElementById('destination-selector').value
 }
 startUp()
 
