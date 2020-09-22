@@ -14,7 +14,7 @@ const startUp = () => {
     .then(() => domUpdates.populateDestinations(destiNames))
 }
 const dashboardFetch = () =>{
-  return travelFetch.dashboardInfo(10)
+  return travelFetch.dashboardInfo(2)
     .then(promises => Promise.all(promises.map(response => response.json())))  
     .then(values => values[1].trips.filter(x => x.userID === values[0].id))
 }
@@ -29,7 +29,7 @@ const destinationFetch = (values) => {
 }
 const createTrips = (userTrips, destiTrips) => {
   let allTrips = generateTrip(userTrips, destiTrips)
-  domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time), 'asideHeader', "beforeend")
+  domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time), "aside-trip-list", "beforeend")
   determineYears(allTrips)
 }
 const generateTrip = (userTrips, destiTrips, opt) => {
@@ -97,13 +97,14 @@ const setUpPost = (combinedInputs, duration, value, destination) =>{
   })
 }
 const postTrip = (postInfo, price, destination) =>{
+  console.log(postInfo, price, destination)
   travelFetch.tripInfo()
     .then(response => response.json())
     .then(value => postInfo.id = value.trips.length + 1)
     .then(() => travelFetch.addTrip(postInfo))
     .then(response => response.json())
     .then(value => value.message.includes('successful') 
-      ? new Trip(value.newResource, price, destination) : alert(`Error${value}`))
+      ? new Trip(value.newResource, price, destination) : alert(`Error${value.message}`))
     .then(value => domUpdates.populateCards([value], 'pending-trips', 'afterbegin'))
 }
 
