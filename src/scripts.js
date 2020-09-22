@@ -66,21 +66,38 @@ const checkData = () =>{
     let combinedInputs = [startDate, returnDate, travelerInput, destinationChoice]
     calculatePriceOfTrip(combinedInputs)
   }
-  document.getElementById("destination-submit").addEventListener('click', postData)
-}
-const postData = () =>{
-  
 }
 const calculatePriceOfTrip = (combinedInputs) => {
+  let destinationId = combinedInputs[3].split(' ').reverse()[0]
   travelFetch.destinationInfo()
-    .then(response =>response.destinations.find(x => x.id == combinedInputs[3].split(' ').reverse()[0]))
+    .then(response =>response.destinations.find(x => x.id == destinationId))
     .then(value => generateTrip(tripInfo, [value], 1))
     .then(value => domUpdates.displayEstimatePrice(value))
+    .then(() => setUpPost(combinedInputs, start, duration, destinationId))
   let start =  time.getDate(combinedInputs[0].split('-'));
   let end = time.getDate(combinedInputs[1].split('-'));
   let duration = (end.getTime() - start.getTime()) / (1000*60*60*24)
   let tripInfo = [{duration: duration, travelers: +combinedInputs[2]}]
 }
+const setUpPost = (combinedInputs, start, duration, destinationId) =>{
+  document.getElementById()
+  console.log(combinedInputs, start, duration, destinationId)
+}
+const postTrip = (data) =>{
+  console.log(this)
+    console.log(data)
+  // let postInfo = {
+  //   id: 6, 
+  //   userID: 8, 
+  //   destinationID: destinationId, 
+  //   travelers: +combinedInputs[2], 
+  //   date: combinedInputs[0].replace(/-/g, '/'), 
+  //   duration: duration, 
+  //   status: 'pending', 
+  //   suggestedActivities: []
+  // }
+}
+
 startUp()
 
   
