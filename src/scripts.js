@@ -29,6 +29,13 @@ const createTrips = (userTrips, destiTrips) => {
     return acc
   }, [])
   domUpdates.populateCards(allTrips.sort((a , b)=> b.time - a.time))
+  determineYears(allTrips)
+}
+const determineYears = (allTrips) =>  {
+  let currentYear = new Date().toString().split(' ',  4)[3]
+  let filtered = allTrips.filter(trip =>{
+    return currentYear === trip.date.toString().split(' ',  4)[3] || currentYear === trip.duration.toString().split(' ',  4)[3]
+  })
 }
 startUp()
 
