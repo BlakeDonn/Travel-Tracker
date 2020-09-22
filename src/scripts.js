@@ -29,7 +29,7 @@ const destinationFetch = (values) => {
 }
 const createTrips = (userTrips, destiTrips) => {
   let allTrips = generateTrip(userTrips, destiTrips)
-  domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time), 'asideHeader')
+  domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time), 'asideHeader', "beforeend")
   determineYears(allTrips)
 }
 const generateTrip = (userTrips, destiTrips, opt) => {
@@ -103,8 +103,9 @@ const postTrip = (postInfo, price, destination) =>{
     .then(value => postInfo.id = value.trips.length + 1)
     .then(() => travelFetch.addTrip(postInfo))
     .then(response => response.json())
-    .then(value => value.message.includes('successful') ? new Trip(value.newResource, price, destination) : alert(`Error${value}`))
-    .then(value => console.log(value))
+    .then(value => value.message.includes('successful') 
+      ? new Trip(value.newResource, price, destination) : alert(`Error${value}`))
+    .then(value => domUpdates.populateCards([value], 'pending-trips', 'afterbegin'))
 }
 
 startUp()
