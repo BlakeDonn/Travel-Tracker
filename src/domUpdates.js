@@ -10,7 +10,15 @@ let domUpdates = {
             <h2 id ="destination">Where: ${trip.destination.location}</h3>
         `)
     })
-    console.log(trips)
+  },
+  populateYearPrice(trips) {
+    let total = trips.reduce((yearPrice, trip)=>{
+      return   yearPrice += trip.price
+    }, 0)
+    return total.toFixed(2)
+  },
+  addPlaceholder() {
+
   }
 }
 

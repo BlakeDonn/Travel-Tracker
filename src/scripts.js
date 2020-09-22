@@ -33,9 +33,11 @@ const createTrips = (userTrips, destiTrips) => {
 }
 const determineYears = (allTrips) =>  {
   let currentYear = new Date().toString().split(' ',  4)[3]
-  let filtered = allTrips.filter(trip =>{
-    return currentYear === trip.date.toString().split(' ',  4)[3] || currentYear === trip.duration.toString().split(' ',  4)[3]
+  let yearMatches = allTrips.filter(trip =>{
+    return currentYear === trip.date.toString().split(' ',  4)[3] 
+    || currentYear === trip.duration.toString().split(' ',  4)[3]
   })
+  yearMatches.length ? domUpdates.populateYearPrice(yearMatches) : domUpdates.addPlaceholder();
 }
 startUp()
 
