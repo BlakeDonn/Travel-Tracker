@@ -6,6 +6,7 @@ html {
 }
 body {
   @include maxSize;
+  margin: 0;
   display: grid;
   grid-template-columns: 1fr 2fr;
   background: $primary-color;
@@ -27,6 +28,9 @@ section {
   .card{
     @include cardStyle;
   }
+}
+#book-new-trip {
+  grid-template-rows: .15fr .2fr .2fr .2fr .2fr .2fr;
 }
 aside {
   @include cardGrid;
