@@ -36,7 +36,7 @@ section {
   }
 }
 #book-new-trip {
-  grid-template-rows: .1fr .1fr .1fr .1fr .1fr .1fr .1fr .1fr .1fr .1fr;
+  grid-template-rows: .3fr .05fr .075fr .05fr .075fr .05fr .075fr .05fr .075fr .05fr .075fr;
 }
 aside {
   @include cardGrid;
@@ -47,6 +47,11 @@ aside {
     @include innerCardGrid
     background-color: $secondary-color;
   }
+}
+.form-input {
+  align-text: center;
+  justify-self: center;
+  min-width: 20vw;
 }
 
 
