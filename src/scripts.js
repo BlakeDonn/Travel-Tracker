@@ -74,8 +74,9 @@ const postData = () =>{
 }
 const calculatePriceOfTrip = (combinedInputs) => {
   travelFetch.destinationInfo()
-  .then(response =>response.destinations.find(x => x.destination.split(',' )[0] === combinedInputs[3].split(',')[0]))
+  .then(response =>response.destinations.find(x => x.destination.includes(combinedInputs[3].split(',').reverse()[0].slice(0,4))))
   .then(value => generateTrip(tripInfo, [value], 1))
+  .then(value => console.log(value))
   let start =  time.getDate(combinedInputs[0].split('-'));
   let end = time.getDate(combinedInputs[1].split('-'));
   let duration = (end.getTime() - start.getTime()) / (1000*60*60*24)
