@@ -12,10 +12,17 @@ const logIn = () => {
     evaluateLogin(username, password)
   })
 }
-const evaluateLogin = () => {
-  
+const evaluateLogin = (username, password) => {
+  if (password === "travel2020") {
+    travelFetch.dashboardInfo(+username.split('r')[2], 1) 
+      .then(response => response.json())
+      .then(value => startUp(value))
+  }
+  else {
+    alert('invalidPassword')
+  }
 }
-const startUp = () => {
+const startUp = (user) => {
   let userTrips, destiTrips, destiNames;
   dashboardFetch()
     .then(values => (userTrips = values, destinationFetch(values)))
