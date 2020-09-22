@@ -18,6 +18,14 @@ let domUpdates = {
         <h2 id ="yearly-total-price">Total cost for all trips: ${obj.totalPrice}</h2>
     `)
   },
+  populateDestinations(destinations) {
+    let destinationDropdown = document.getElementById('destination-dropdown')
+    let sorted = destinations.sort()
+    let listItems = sorted.reduce((allDest, dest)=>{
+      return allDest += `<option value = ${dest.split(' ').join('')}></br>`
+    },'')
+    destinationDropdown.insertAdjacentHTML('afterbegin', listItems)
+  }
 }
 
 export default domUpdates;

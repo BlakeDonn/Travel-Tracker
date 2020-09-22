@@ -4,12 +4,13 @@ import Trip from './classes/trip';
 import domUpdates from './domUpdates';
 
 const startUp = () => {
-  let userTrips, destiTrips;
+  let userTrips, destiTrips, destiNames;
   dashboardFetch()
     .then(values => (userTrips = values, destinationFetch(values)))
-    .then(values => destiTrips = values[1])
+    .then(values => (destiTrips = values[1], destiNames = values[0]))
     .then(() => userTrips.sort((a, b) => a.destinationID - b.destinationID))
     .then(() => createTrips(userTrips, destiTrips))
+    .then(() => domUpdates.populateDestinations(destiNames))
 }
 const dashboardFetch = () =>{
   return travelFetch.dashboardInfo(8)
@@ -26,7 +27,6 @@ const destinationFetch = (values) => {
  .then(() => [destiNames, destiTrips])
 }
 const createTrips = (userTrips, destiTrips) => {
-  console.log(destiTrips)
   let allTrips = userTrips.reduce((acc, cur, i)=>{
     let lodgingCost = cur.duration * destiTrips[i].estimatedLodgingCostPerDay
     let flightCost = cur.travelers * destiTrips[i].estimatedFlightCostPerPerson
