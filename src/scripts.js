@@ -29,15 +29,16 @@ const destinationFetch = (values) => {
 }
 const createTrips = (userTrips, destiTrips) => {
   let allTrips = generateTrip(userTrips, destiTrips)
-  domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time))
+  domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time), 'asideHeader')
   determineYears(allTrips)
 }
 const generateTrip = (userTrips, destiTrips, opt) => {
   return userTrips.reduce((acc, cur, i)=>{
-    let lodgingCost = cur.duration * destiTrips[i].estimatedLodgingCostPerDay
-    let flightCost = cur.travelers * destiTrips[i].estimatedFlightCostPerPerson
+    let findDestiTrip = destiTrips.find(x => x.id === cur.destinationID)
+    let lodgingCost = cur.duration * findDestiTrip.estimatedLodgingCostPerDay
+    let flightCost = cur.travelers * findDestiTrip.estimatedFlightCostPerPerson
     let price = lodgingCost + flightCost
-    !opt ? acc.push(new Trip(cur, price, destiTrips[i])) : acc.push(price)
+    !opt ? acc.push(new Trip(cur, price, findDestiTrip)) : acc.push(price)
     return acc
   }, [])
 }
@@ -100,7 +101,7 @@ const postTrip = (postInfo) =>{
     .then(value => postInfo.id = value.trips.length + 1)
     .then(() => travelFetch.addTrip(postInfo))
     .then(response => response.json())
-    .then(values => console.log(values))
+    .then(values => console.log(values.includes('successfully')))
 }
 
 startUp()
