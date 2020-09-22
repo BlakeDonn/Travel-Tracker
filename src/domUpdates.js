@@ -22,7 +22,7 @@ let domUpdates = {
     let destinationDropdown = document.getElementById('destination-dropdown')
     let sorted = destinations.sort()
     let listItems = sorted.reduce((allDest, dest)=>{
-      return allDest += `<option value = ${dest.split(' ').join('')}></br>`
+      return allDest += `<option id = "${dest[1]}" value = ${dest[0].split(' ').join('')}></br>`
     },'')
     destinationDropdown.insertAdjacentHTML('afterbegin', listItems)
   }

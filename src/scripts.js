@@ -2,6 +2,7 @@ import './css/base.scss';
 import travelFetch from './requests/apis';
 import Trip from './classes/trip';
 import domUpdates from './domUpdates';
+import time from './scripts/time';
 
 const startUp = () => {
   let userTrips, destiTrips, destiNames;
@@ -22,7 +23,7 @@ const destinationFetch = (values) => {
   let valueIds = values.map(x => x.destinationID)
   return travelFetch.destinationInfo()
     .then(response => destinationData = response)
-    .then(() => destiNames = destinationData.destinations.map(x => x.destination))
+    .then(() => destiNames = destinationData.destinations.map(x => [x.destination, x.id]))
     .then(() => destiTrips = destinationData.destinations.filter(x => valueIds.includes(x.id)))
     .then(() => [destiNames, destiTrips])
 }
@@ -31,13 +32,13 @@ const createTrips = (userTrips, destiTrips) => {
   domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time))
   determineYears(allTrips)
 }
-const generateTrip = (userTrips, destiTrips) => {
+const generateTrip = (userTrips, destiTrips, opt) => {
   console.log(userTrips, destiTrips)
   return userTrips.reduce((acc, cur, i)=>{
     let lodgingCost = cur.duration * destiTrips[i].estimatedLodgingCostPerDay
     let flightCost = cur.travelers * destiTrips[i].estimatedFlightCostPerPerson
     let price = lodgingCost + flightCost
-    acc.push(new Trip(cur, price, destiTrips[i]))
+    !opt ? acc.push(new Trip(cur, price, destiTrips[i])) : acc.push(price)
     return acc
   }, [])
 }
@@ -72,13 +73,13 @@ const postData = () =>{
   
 }
 const calculatePriceOfTrip = (combinedInputs) => {
-  let start =  time.getDate(tripInfo.date.split('/'));
-  let end = time.getDate(tripInfo.date.split('/'));
-  
-  let thisDate = new Date(date.getTime() - millisecondsFromThen)
   travelFetch.destinationInfo()
   .then(response =>response.destinations.find(x => x.destination.split(',' )[0] === combinedInputs[3].split(',')[0]))
-  .then(value => generateTrip(combinedInputs, value))
+  .then(value => generateTrip(tripInfo, [value], 1))
+  let start =  time.getDate(combinedInputs[0].split('-'));
+  let end = time.getDate(combinedInputs[1].split('-'));
+  let duration = (end.getTime() - start.getTime()) / (1000*60*60*24)
+  let tripInfo = [{duration: duration, travelers: +combinedInputs[2]}]
 }
 startUp()
 
