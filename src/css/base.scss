@@ -29,8 +29,13 @@ section {
   }
 }
 aside {
+  @include cardGrid;
   outline-color: blue;
   outline-style: solid;
+  .card {
+    @include cardStyle;
+    background-color: $secondary-color;
+  }
 }
 
 
