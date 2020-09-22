@@ -1,7 +1,5 @@
 import './css/base.scss';
 import travelFetch from './requests/apis';
-import time from './scripts/time';
-import './images/turing-logo.png'
 import Trip from './classes/trip';
 import domUpdates from './domUpdates';
 
@@ -30,7 +28,7 @@ const createTrips = (userTrips, destiTrips) => {
     acc.push(new Trip(cur, price, destiTrips[i]))
     return acc
   }, [])
-  return allTrips.sort((a , b)=> b.time - a.time)
+  domUpdates.populateCards(allTrips.sort((a , b)=> b.time - a.time))
 }
 startUp()
 
