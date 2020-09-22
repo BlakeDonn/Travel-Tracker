@@ -110,11 +110,8 @@ label{
     color: $primary-color;  
     font-size: 17px;  
 }  
-#Uname{  
+#username, #password{  
    @include labelNames 
-}  
-#Pass{  
-  @include labelNames 
 }  
 #log{  
     @include labelNames 

@@ -5,14 +5,12 @@
   </head>
   <body class = "login-background">
     <div class="login">    
-    <form id="login" method="get" action="login.php">    
-        <label for = "Uname"class = "form-tag">User Name</label> 
-        <input type="text" name="Uname" id="Uname" placeholder="Username">    
-        <label for = "Pass"class = "form-tag">Password</label> 
-        <input type="Password" name="Pass" id="Pass" placeholder="Password">    
+        <label for = "uname">User Name</label> 
+        <input type="text" name="uname" class = "login login-data" id="username" placeholder="Username">    
+        <label for = "pass">Password</label> 
+        <input type="text" name="pass" class = "login-data"id="password" placeholder="Password">    
         <br><br>    
-        <input type="button" name="log" id="log" value="Log In Here">       
-    </form>   
+        <input type="submit" name="log" id="login-input" value="Log In Here">       
   </div>
     <div class = "grid-container hidden" >
       <header id = "welcome" class ="header" >
@@ -46,7 +44,7 @@
           <label for = "destination-submit" class = "form-tag">Click Submit To Book!</label>
           <input type="submit" id = "destination-submit" class = "form-input">
         </section>
-        <section id = "yearly-cost-summary" class = "card"
+        <section id = "yearly-cost-summary" class = "card"</section>
       </div>
       </main>
       <footer ></footer>

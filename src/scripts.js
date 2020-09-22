@@ -4,6 +4,17 @@ import Trip from './classes/trip';
 import domUpdates from './domUpdates';
 import time from './scripts/time';
 
+const logIn = () => {
+  document.getElementById('login-input').addEventListener('click', function() {
+    let userPass = document.querySelectorAll('.login-data')
+    let username = userPass[0].value
+    let password = userPass[1].value
+    evaluateLogin(username, password)
+  })
+}
+const evaluateLogin = () => {
+  
+}
 const startUp = () => {
   let userTrips, destiTrips, destiNames;
   dashboardFetch()
@@ -107,7 +118,7 @@ const postTrip = (postInfo, price, destination) =>{
       ? new Trip(value.newResource, price, destination) : alert(`Error${value.message}`))
     .then(value => domUpdates.populateCards([value], 'pending-trips', 'afterbegin'))
 }
-
+logIn()
 startUp()
 
   
