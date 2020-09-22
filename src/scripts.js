@@ -7,19 +7,26 @@ const startUp = () => {
   let userTrips, destiTrips;
   dashboardFetch()
     .then(values => (userTrips = values, destinationFetch(values)))
-    .then(values => destiTrips = values)
+    .then(values => destiTrips = values[1])
     .then(() => userTrips.sort((a, b) => a.destinationID - b.destinationID))
     .then(() => createTrips(userTrips, destiTrips))
 }
 const dashboardFetch = () =>{
-  return travelFetch.dashboardInfo(30)
+  return travelFetch.dashboardInfo(8)
     .then(promises => Promise.all(promises.map(response => response.json())))  
     .then(values => values[1].trips.filter(x => x.userID === values[0].id))
 }
 const destinationFetch = (values) => {
-  return travelFetch.destinationInfo(values.map(x => x.destinationID))
+  let destiNames, destiTrips, destinationData;
+  let valueIds = values.map(x => x.destinationID)
+ return travelFetch.destinationInfo()
+ .then(response => destinationData = response)
+ .then(() => destiNames = destinationData.destinations.map(x => x.destination))
+ .then(() => destiTrips = destinationData.destinations.filter(x => valueIds.includes(x.id)))
+ .then(() => [destiNames, destiTrips])
 }
 const createTrips = (userTrips, destiTrips) => {
+  console.log(destiTrips)
   let allTrips = userTrips.reduce((acc, cur, i)=>{
     let lodgingCost = cur.duration * destiTrips[i].estimatedLodgingCostPerDay
     let flightCost = cur.travelers * destiTrips[i].estimatedFlightCostPerPerson

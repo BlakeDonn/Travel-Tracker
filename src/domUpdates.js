@@ -1,4 +1,3 @@
-
 let domUpdates = {
   populateCards(trips) {
     let cardCatalyst = document.getElementById('asideHeader')
