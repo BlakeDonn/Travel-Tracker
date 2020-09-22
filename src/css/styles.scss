@@ -1,58 +1,7 @@
-// #welcome {
-//     grid-area: header;
-//   }
-//   #pending-trips {
-//     grid-area: section1;
-//   }
-//   #book-new-trip {
-//     grid-area: section2;
-//   }
-//   #yearly-cost-summary {
-//     grid-area: footer;
-//   }
-//   #trip-side {
-//     grid-area: aside;
-//   }
-// @mixin maxSize{
-//     height: 100%;
-//     width: 100%;
-//   }
-//   // @mixin mainGrid {
-//   //   display: grid;
-//   //   grid-template-rows: .33fr 1fr .33fr;
-//   //   grid-template-columns: 1fr 1fr;
-//   //   grid-template-areas: 
-//   //   "header header header"
-//   //   "aside section1 section2"
-//   //   "aside footer footer";
-//   // }
-// @mixin cardGrid{
-//     display: grid;
-//     grid-template-columns: auto;
-// }
-//  @mixin cardStyle {
-//     background-color: $quaternary-color;
-//     align-self: center;
-//     border-radius: 25px;
-//     min-height: 12.50vh;
-//     min-width: 25vw;
-//     }
-//   @mixin innerCardGrid {
-//     // background-image: url("https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80");
-//     grid-template-rows: auto;
-//   }
-//   @mixin rightStyle {
-//       background-color: $secondary-color;
-//       margin: 15px;
-//       border-radius: 25px;
-//   }
-//   .grid-container {
-//     display: grid;
-//     grid-template-columns: 240px 1fr;
-//     grid-template-rows: 50px 1fr 50px;
-//     grid-template-areas:
-//       "sidenav header"
-//       "sidenav main"
-//       "sidenav footer";
-//     height: 100vh;
-//   }
+@mixin labelNames {
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}
