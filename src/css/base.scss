@@ -4,7 +4,7 @@
 html {
   @include maxSize;
 }
-h2, h3, h1 { 
+h2, h3, h1, .form-tag { 
   justify-self: center;
 }
 .yearly-number-of-trips {
@@ -36,7 +36,7 @@ section {
   }
 }
 #book-new-trip {
-  grid-template-rows: .15fr .1fr .2fr .2fr .2fr .2fr .2fr;
+  grid-template-rows: .1fr .1fr .1fr .1fr .1fr .1fr .1fr .1fr .1fr .1fr;
 }
 aside {
   @include cardGrid;
