@@ -4,8 +4,6 @@ import time from './scripts/time';
 import './images/turing-logo.png'
 import Trip from './classes/trip';
 
-
-
 const startUp = () => {
   let userTrips, destiTrips;
   dashboardFetch()
@@ -30,7 +28,7 @@ const createTrips = (userTrips, destiTrips) => {
     let price = lodgingCost + flightCost
     acc.push(new Trip(cur, price, destiTrips[i]))
     return acc
-  },[])
+  }, [])
 }
 startUp()
 

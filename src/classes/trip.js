@@ -6,6 +6,8 @@ class Trip {
     this.year = tripInfo.date.split('/')[0];
     this.price = price;
     this.destination = {location: destination.destination, image: destination.image, alt: destination.alt}
+    this.date = tripInfo.date;
+    this.time = time.getDate(tripInfo.date.split('/'));
   }
 }
 export default Trip
