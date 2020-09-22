@@ -33,7 +33,6 @@ const createTrips = (userTrips, destiTrips) => {
   determineYears(allTrips)
 }
 const generateTrip = (userTrips, destiTrips, opt) => {
-  console.log(userTrips, destiTrips)
   return userTrips.reduce((acc, cur, i)=>{
     let lodgingCost = cur.duration * destiTrips[i].estimatedLodgingCostPerDay
     let flightCost = cur.travelers * destiTrips[i].estimatedFlightCostPerPerson
@@ -73,11 +72,9 @@ const postData = () =>{
   
 }
 const calculatePriceOfTrip = (combinedInputs) => {
-  console.log(combinedInputs[3].split(' ').reverse()[0])
   travelFetch.destinationInfo()
-  .then(response =>response.destinations.find(x => x.id == combinedInputs[3].split(' ').reverse()[0]))
-  .then(value => generateTrip(tripInfo, [value], 1))
-  .then(value => console.log(value))
+    .then(response =>response.destinations.find(x => x.id == combinedInputs[3].split(' ').reverse()[0]))
+    .then(value => generateTrip(tripInfo, [value], 1))
   let start =  time.getDate(combinedInputs[0].split('-'));
   let end = time.getDate(combinedInputs[1].split('-'));
   let duration = (end.getTime() - start.getTime()) / (1000*60*60*24)

@@ -29,6 +29,9 @@ section {
     @include cardStyle;
   }
 }
+#book-new-trip {
+  grid-template-rows: .15fr .2fr .2fr .2fr .2fr .2fr;
+}
 aside {
   @include cardGrid;
   outline-color: blue;
