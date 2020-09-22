@@ -13,7 +13,6 @@ let travelFetch = {
       .then(response => response.json())
   },
   addTrip(someDataToSend) {
-    console.log(someDataToSend)
     const tripUrl = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips'
     const promise = fetch(tripUrl, {
       method: 'POST',

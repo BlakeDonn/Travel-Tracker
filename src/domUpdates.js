@@ -1,5 +1,6 @@
 let domUpdates = {
   populateCards(trips, domLocation, inputLocation) {
+    console.log(trips)
     trips.forEach(trip =>{
       trip.tripStatus === 'pending' ? (domLocation = 'pending-trips', inputLocation = 'afterbegin') : null;
       let catalyst = document.getElementById(domLocation)

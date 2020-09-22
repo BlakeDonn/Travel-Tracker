@@ -4,6 +4,12 @@
 html {
   @include maxSize;
 }
+h2, h3, h1 { 
+  justify-self: center;
+}
+.yearly-number-of-trips {
+  justify-self: center;
+}
 body {
   @include maxSize;
   margin: 0;
@@ -30,7 +36,7 @@ section {
   }
 }
 #book-new-trip {
-  grid-template-rows: .15fr .2fr .2fr .2fr .2fr .2fr;
+  grid-template-rows: .15fr .1fr .2fr .2fr .2fr .2fr .2fr;
 }
 aside {
   @include cardGrid;
