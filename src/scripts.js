@@ -81,7 +81,7 @@ const calculatePriceOfTrip = (combinedInputs) => {
 }
 const setUpPost = (combinedInputs, start, duration, destinationId) =>{
   document.getElementById('destination-submit').addEventListener('click', function() {
-  let postInfo = {
+    let postInfo = {
       id: 6, 
       userID: 8, 
       destinationID: +destinationId, 
@@ -92,12 +92,15 @@ const setUpPost = (combinedInputs, start, duration, destinationId) =>{
       suggestedActivities: []
     }
     postTrip(postInfo)
-})
+  })
 }
 const postTrip = (postInfo) =>{
-  travelFetch.addTrip(postInfo)
-  .then(response => response.json())
-  .then(values => console.log(values))
+  travelFetch.tripInfo()
+    .then(response => response.json())
+    .then(value => postInfo.id = value.trips.length + 1)
+    .then(() => travelFetch.addTrip(postInfo))
+    .then(response => response.json())
+    .then(values => console.log(values))
 }
 
 startUp()

@@ -5,7 +5,7 @@ let travelFetch = {
       fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips')
     ])
   },
-  tripInfo(){
+  tripInfo() {
     return fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips')
   },
   destinationInfo() {
