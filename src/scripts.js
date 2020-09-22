@@ -80,22 +80,24 @@ const calculatePriceOfTrip = (combinedInputs) => {
   let tripInfo = [{duration: duration, travelers: +combinedInputs[2]}]
 }
 const setUpPost = (combinedInputs, start, duration, destinationId) =>{
-  document.getElementById()
-  console.log(combinedInputs, start, duration, destinationId)
+  document.getElementById('destination-submit').addEventListener('click', function() {
+  let postInfo = {
+      id: 6, 
+      userID: 8, 
+      destinationID: +destinationId, 
+      travelers: +combinedInputs[2], 
+      date: combinedInputs[0].replace(/-/g, '/'), 
+      duration: duration, 
+      status: 'pending', 
+      suggestedActivities: []
+    }
+    postTrip(postInfo)
+})
 }
-const postTrip = (data) =>{
-  console.log(this)
-    console.log(data)
-  // let postInfo = {
-  //   id: 6, 
-  //   userID: 8, 
-  //   destinationID: destinationId, 
-  //   travelers: +combinedInputs[2], 
-  //   date: combinedInputs[0].replace(/-/g, '/'), 
-  //   duration: duration, 
-  //   status: 'pending', 
-  //   suggestedActivities: []
-  // }
+const postTrip = (postInfo) =>{
+  travelFetch.addTrip(postInfo)
+  .then(response => response.json())
+  .then(values => console.log(values))
 }
 
 startUp()
