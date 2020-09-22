@@ -3,6 +3,7 @@ import travelFetch from './requests/apis';
 import Trip from './classes/trip';
 import domUpdates from './domUpdates';
 
+
 const startUp = () => {
   let userTrips, destiTrips;
   dashboardFetch()
@@ -45,6 +46,7 @@ const calculateYearPrice = (trips) => {
   total = total + ((10 / 100) * total)
   domUpdates.populateYearPrice({tripAmount: trips.length, totalPrice: total.toFixed(2)})
 }
+
 
 startUp()
 

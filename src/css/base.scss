@@ -6,6 +6,7 @@ html {
 }
 body {
   @include maxSize;
+  margin: 0;
   display: grid;
   grid-template-columns: 1fr 2fr;
   background: $primary-color;

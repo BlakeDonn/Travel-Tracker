@@ -1,3 +1,4 @@
+import flatpickr from "flatpickr";
 let domUpdates = {
   populateCards(trips) {
     let cardCatalyst = document.getElementById('asideHeader')
@@ -18,8 +19,8 @@ let domUpdates = {
         <h2 id ="yearly-total-price">Total cost for all trips: ${obj.totalPrice}</h2>
     `)
   },
-  addPlaceholder() {
-
+  addFlitPickr() {
+    let dateSelected = flatpickr("#pickADate", {});
   }
 }
 
