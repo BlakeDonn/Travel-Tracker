@@ -1,0 +1,43 @@
+#welcome {
+    grid-area: header;
+  }
+  #pending-trips {
+    grid-area: section1;
+  }
+  #book-new-trip {
+    grid-area: section2;
+  }
+  #yearly-cost-summary {
+    grid-area: footer;
+  }
+@mixin maxSize{
+    height: 100%;
+    width: 100%;
+  }
+  @mixin mainGrid {
+    display: grid;
+    grid-template-rows: .33fr 1fr .33fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "header header"
+    "section1 section2"
+    "footer footer";
+  }
+@mixin cardGrid{
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+}
+ @mixin cardStyle {
+    background-color: $quaternary-color;
+    align-self: center;
+    border-radius: 25px;
+    min-height: 12.50vh;
+    min-width: 25vw;
+    }
+  @mixin rightStyle {
+      background-color: $secondary-color;
+      margin: 15px;
+      border-radius: 25px;
+  }
+  

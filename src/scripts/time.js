@@ -20,6 +20,9 @@ let time = {
     if (testDate.getTime()  > currentDate.getTime()) {
       return 'upcoming'
     }
+  },
+  getDate(date) {
+    return new Date(date[0], date[1] - 1, date[2]).getTime()
   }
 }
 export default time
