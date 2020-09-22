@@ -2,12 +2,14 @@ import time from '../scripts/time';
 
 class Trip {
   constructor(tripInfo, price, destination) {
-    this.tripStatus = time.isBetween(tripInfo.status, tripInfo.date.split('/'), time.daysFromDate(tripInfo.date.split('/'), tripInfo.duration));
-    this.year = tripInfo.date.split('/')[0];
     this.price = price;
-    this.destination = {location: destination.destination, image: destination.image, alt: destination.alt}
-    this.date = tripInfo.date;
-    this.time = time.getDate(tripInfo.date.split('/'));
+    this.date = time.getDate(tripInfo.date.split('/'));
+    this.time = this.date.getTime();
+    this.duration = time.daysFromDate(this.date, tripInfo.duration);
+    this.tripStatus = time.isBetween(tripInfo.status, this.date, this.duration);
+    this.destination = {
+      location: destination.destination, image: destination.image, alt: destination.alt
+    }
   }
 }
 export default Trip

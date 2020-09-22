@@ -1,8 +1,7 @@
 import './css/base.scss';
 import travelFetch from './requests/apis';
-import time from './scripts/time';
-import './images/turing-logo.png'
 import Trip from './classes/trip';
+import domUpdates from './domUpdates';
 
 const startUp = () => {
   let userTrips, destiTrips;
@@ -22,13 +21,14 @@ const destinationFetch = (values) => {
   return travelFetch.destinationInfo(values.map(x => x.destinationID))
 }
 const createTrips = (userTrips, destiTrips) => {
-  return userTrips.reduce((acc, cur, i)=>{
+  let allTrips = userTrips.reduce((acc, cur, i)=>{
     let lodgingCost = cur.duration * destiTrips[i].estimatedLodgingCostPerDay
     let flightCost = cur.travelers * destiTrips[i].estimatedFlightCostPerPerson
     let price = lodgingCost + flightCost
     acc.push(new Trip(cur, price, destiTrips[i]))
     return acc
   }, [])
+  domUpdates.populateCards(allTrips.sort((a , b)=> b.time - a.time))
 }
 startUp()
 
