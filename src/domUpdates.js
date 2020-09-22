@@ -30,7 +30,7 @@ let domUpdates = {
     let total = +price + ((10 / 100) * +price)
     let target1 = document.getElementById('trip-title')
     target1.insertAdjacentHTML("beforeend", 
-    `<h3 id ="yearly-number-of-trips">Your estimated cost: ${total.toFixed(2)} (agency fee included)</h3`
+      `<h3 id ="yearly-number-of-trips">Your estimated cost: ${total.toFixed(2)} (agency fee included)</h3`
     )
   }
 }
