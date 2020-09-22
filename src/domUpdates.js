@@ -1,10 +1,11 @@
 let domUpdates = {
-  populateCards(trips) {
-    let cardCatalyst = document.getElementById('asideHeader')
+  populateCards(trips, domLocation, inputLocation) {
     trips.forEach(trip =>{
+      trip.tripStatus === 'pending' ? (domLocation = 'pending-trips', inputLocation = 'afterbegin') : null;
+      let catalyst = document.getElementById(domLocation)
       let date = trip.date.toString().split('00')[0]
       let duration = trip.duration.toString().split('00')[0]
-      cardCatalyst.insertAdjacentHTML("afterend",
+      catalyst.insertAdjacentHTML(inputLocation,
         `<div id = "${trip.destination.location}" class = "card">
             <h2 id ="date">When: ${date} - ${duration}</h3>
             <h2 id ="destination">Where: ${trip.destination.location}</h3>
@@ -32,6 +33,7 @@ let domUpdates = {
     target1.insertAdjacentHTML("beforeend", 
       `<h3 id ="yearly-number-of-trips">Your estimated cost: ${total.toFixed(2)} (agency fee included)</h3`
     )
+    return price
   }
 }
 

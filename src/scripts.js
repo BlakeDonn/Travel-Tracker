@@ -29,15 +29,16 @@ const destinationFetch = (values) => {
 }
 const createTrips = (userTrips, destiTrips) => {
   let allTrips = generateTrip(userTrips, destiTrips)
-  domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time))
+  domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time), 'asideHeader', "beforeend")
   determineYears(allTrips)
 }
 const generateTrip = (userTrips, destiTrips, opt) => {
   return userTrips.reduce((acc, cur, i)=>{
-    let lodgingCost = cur.duration * destiTrips[i].estimatedLodgingCostPerDay
-    let flightCost = cur.travelers * destiTrips[i].estimatedFlightCostPerPerson
+    let foundDesti = opt ?  destiTrips : destiTrips.find(x => x.id === cur.destinationID)
+    let lodgingCost = cur.duration * foundDesti.estimatedLodgingCostPerDay
+    let flightCost = cur.travelers * foundDesti.estimatedFlightCostPerPerson
     let price = lodgingCost + flightCost
-    !opt ? acc.push(new Trip(cur, price, destiTrips[i])) : acc.push(price)
+    !opt ? acc.push(new Trip(cur, price, foundDesti)) : acc.push(price)
     return acc
   }, [])
 }
@@ -66,21 +67,47 @@ const checkData = () =>{
     let combinedInputs = [startDate, returnDate, travelerInput, destinationChoice]
     calculatePriceOfTrip(combinedInputs)
   }
-  document.getElementById("destination-submit").addEventListener('click', postData)
-}
-const postData = () =>{
-  
 }
 const calculatePriceOfTrip = (combinedInputs) => {
+  let destinationId = combinedInputs[3].split(' ').reverse()[0]
+  let destination;
   travelFetch.destinationInfo()
-    .then(response =>response.destinations.find(x => x.id == combinedInputs[3].split(' ').reverse()[0]))
-    .then(value => generateTrip(tripInfo, [value], 1))
+    .then(response => destination = response.destinations.find(x => x.id == destinationId))
+    .then(()=> generateTrip(tripInfo, destination, 1))
     .then(value => domUpdates.displayEstimatePrice(value))
+    .then(value => setUpPost(combinedInputs, duration, value, destination))
   let start =  time.getDate(combinedInputs[0].split('-'));
   let end = time.getDate(combinedInputs[1].split('-'));
   let duration = (end.getTime() - start.getTime()) / (1000*60*60*24)
   let tripInfo = [{duration: duration, travelers: +combinedInputs[2]}]
 }
+const setUpPost = (combinedInputs, duration, value, destination) =>{
+  console.log(destination)
+  document.getElementById('destination-submit').addEventListener('click', function() {
+    let postInfo = {
+      id: 6, 
+      userID: 8, 
+      destinationID: +destination.id, 
+      travelers: +combinedInputs[2], 
+      date: combinedInputs[0].replace(/-/g, '/'), 
+      duration: duration, 
+      status: 'pending', 
+      suggestedActivities: []
+    }
+    postTrip(postInfo, value, destination)
+  })
+}
+const postTrip = (postInfo, price, destination) =>{
+  travelFetch.tripInfo()
+    .then(response => response.json())
+    .then(value => postInfo.id = value.trips.length + 1)
+    .then(() => travelFetch.addTrip(postInfo))
+    .then(response => response.json())
+    .then(value => value.message.includes('successful') 
+      ? new Trip(value.newResource, price, destination) : alert(`Error${value}`))
+    .then(value => domUpdates.populateCards([value], 'pending-trips', 'afterbegin'))
+}
+
 startUp()
 
   
