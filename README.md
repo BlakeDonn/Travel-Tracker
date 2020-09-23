@@ -60,12 +60,12 @@
 
 ## In Action
 
-#### Take 1
+#### Logging in
 
-- When the user clicks on the `favorite start` the recipes get added to the user's favorites. 
-- Whe user can click on the favorite button the user can see the recipes saved
-- By clicking on the `home button` the user can go back and see all the recipe cards
-  <img src="https://media.giphy.com/media/jqwbXFNrzwcf4eVfjl/giphy.gif" height=auto width=75%/>
+- When a user attempts to log in (clicks log in button username/password will be evaluated)
+- If correct information, the user will be presented with their dashboard that is populated by the API.
+- If incorrect information, the user will get an alert message with what piece of inormation is incorrect
+  <img src=https://i.imgur.com/xHDJwL7.png>
 
 #### Take 2
 
