@@ -3,5 +3,6 @@
   border-radius: 25px;
 }
 @mixin titleStyles {
-  font: $title-font;
+  font-style: $title-font;
+  // font-color: $aside-color;
 }

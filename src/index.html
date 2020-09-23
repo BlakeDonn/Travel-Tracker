@@ -4,7 +4,7 @@
     <title>Travel Tracker</title>
   </head>
   <body>
-    <div class = "grid-container">
+    <div id = "tabpanel" class = "grid-container" tabindex ="0">
       <header id = "welcome" class ="header" >
         <h1>Welcome!</h1>
       </header>
@@ -16,6 +16,7 @@
       </aside>
       <main class = "main" >
         <div class = "main-cards">
+          </section>
           <section id = "book-new-trip" class = card>
             <h2 id = "trip-title">Book A Trip</h2>
             <label for = "start-date-input"class = "form-tag">Select A Start Date</label>
@@ -31,7 +32,6 @@
             <label for = "destination-submit" class = "form-tag">Click Submit To Book!</label>
             <input type="submit" id = "destination-submit" class = "form-input">
           </section>
-          <section id = "yearly-cost-summary" class = "card"></section>
         </div>
       <section id ="pending-trips" class = main-overview>
         <h2 id = "pending-header">Your Pending Trips:</h2>

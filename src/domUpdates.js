@@ -9,7 +9,7 @@ let domUpdates = {
       let date = trip.date.toString().split('00')[0]
       let duration = trip.duration.toString().split('00')[0]
       catalyst.insertAdjacentHTML(inputLocation,
-        `<div id = "${trip.destination.location}" class = "${className}">
+        `<div id = "${trip.destination.location}" role="tabpanel"  tabindex="0" class = "${className}">
             <h4 id = "date-label"> When:</h4>
             <div id ="date" class = ""> ${date} - ${duration}</div>
             <h4 id = "location-label"> Where:</h4>
@@ -18,10 +18,14 @@ let domUpdates = {
     })
   },
   populateYearPrice(obj) {
-    let footerElement = document.getElementById('yearly-cost-summary')
-    footerElement.insertAdjacentHTML("afterbegin", 
-      `<h2 id ="yearly-number-of-trips">You went on ${obj.tripAmount} trips this year!</h2>
-        <h2 id ="yearly-total-price">Total cost for all trips: ${obj.totalPrice}</h2>
+    let footerElement = document.querySelector('.main-cards')
+    footerElement.insertAdjacentHTML("beforeend", 
+      `<div id="total-trips" role="tabpanel" tabindex="0">
+        <section id = "yearly-cost-summary" class = "card">    
+        <h2 id ="yearly-number-of-trips">You went on ${obj.tripAmount} trips this year!</h2>
+        <h2 id ="yearly-total-price">Total cost for all trips: $${obj.totalPrice}</h2>
+        </section>
+        </div>
     `)
   },
   populateDestinations(destinations) {
