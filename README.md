@@ -66,18 +66,17 @@
 - If correct information, the user will be presented with their dashboard that is populated by the API.
 - If incorrect information, the user will get an alert message with what piece of inormation is incorrect
   <img src=https://i.imgur.com/xHDJwL7.png>
+  <img src=https://i.imgur.com/15FeQSw.gif>
+  
+### On Dashboard load
 
-#### Take 2
+- 
+#### Booking a Trip
 
-- When the user clicks on the `instructions button` the user is directed to a different view where the cost, ingredients needed and instructions for the recipe are displayed.
+- When A user fills out the form with start date, end date, amount of travelers, and a specific destination, they will be presented with an estimated cost
+- There pending trips will also be updated to reflect the new trip they have booked
+  <img src=https://i.imgur.com/xHDJwL7.png>
 
-  <img src="https://media.giphy.com/media/KBDXI5aB0xVXU1Nu6p/giphy.gif" alt="When the user click on the instructions button the user is directed to a different view where the cost, ingredients needed and instructions for the recipe are displayed" height=100% width=80%/>
-
-#### Take 3
-- When the user click on the `cookMeal button` the recipe card that was targeted hides and then a list of the status of each ingredinet form the user's pantry displays in the same place of the recipe card.
-- After the `cookMeal` button is clicked, the user is presented with two other buttons that appear at the button of where the recipe card was. 
-- The `No thanks` and `Add ingredients` button let the user decide to add the ingredients needed for the recipe to the user's pantry and the `No thanks` button let's the user go back to the previous vew to keep searching for recipes.
-  <img src="https://media.giphy.com/media/KeVtEUgnfl4zdABJjS/giphy.gif" alt=" After the `cookMeal` button is clicked, the user is presented with two other buttons that appear at the button of where the recipe card was. The `No thanks` and `Add ingredients` button let the user decide to add the ingredients needed for the recipe to the user's pantry and the `No thanks` button let's the user go back to the previous vew to keep searching for recipes." height=auto width=75%/>
 
 ## Project Directions
 [whats-cooking-refactor specifications](https://frontend.turing.io/projects/module-2/refactor-tractor-wc.html)
