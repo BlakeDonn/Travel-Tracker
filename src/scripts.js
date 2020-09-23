@@ -24,34 +24,20 @@ const evaluateLogin = (username, password) => {
   }
 }
 const startUp = (user) => {
-  let userTrips, destiTrips, destiNames;
   dashboardFetch(user)
     .then(values => currentUser = new Traveler(values))
     .then(value => formatTrips(value))
-    .then(() => console.log(currentUser))
-    // .then(values => (destiTrips = values[1], destiNames = values[0]))
-    // .then(() => userTrips.sort((a, b) => a.destinationID - b.destinationID))
-    // .then(() => generateUser(user, trips))
-    // .then(() => createTrips(userTrips, destiTrips, user))
-    // .then(() => domUpdates.populateDestinations(destiNames))
-}
-const formatTrips = (user) =>{
-  currentUser.formatTrips(user)
+    .then(() => domUpdates.populateDestinations(currentUser.destinatio))
 }
 const dashboardFetch = (user) =>{
   return travelFetch.dashboardInfo(user.id)
     .then(promises => Promise.all(promises.map(response => response.json())))  
-    .then(values => [values[0], values[1].trips.filter(x => x.userID === values[0].id), values[2]])
+    .then(values => [values[0], values[1].trips.filter(x => x.userID === values[0].id), values[2].destinations])
 }
-// const destinationFetch = (values) => {
-//   let destiNames, destiTrips, destinationData;
-//   let valueIds = values.map(x => x.destinationID)
-//   return travelFetch.destinationInfo()
-//     .then(response => destinationData = response)
-//     .then(() => destiNames = destinationData.destinations.map(x => [x.destination, x.id]))
-//     .then(() => destiTrips = destinationData.destinations.filter(x => valueIds.includes(x.id)))
-//     .then(() => [destiNames, destiTrips])
-// }
+const formatTrips = (user) =>{
+  currentUser.formatTrips(user)
+  currentUser.addCostToUserTrips()
+}
 const createTrips = (userTrips, destiTrips) => {
   let allTrips = generateTrip(userTrips, destiTrips)
   domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time), "aside-trip-list", "beforeend")
