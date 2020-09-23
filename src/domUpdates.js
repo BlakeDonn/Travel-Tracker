@@ -2,12 +2,13 @@ let domUpdates = {
   populateCards(trips, domLocation, inputLocation) {
     trips.forEach(trip =>{
       let className;
-      trip.tripStatus === 'pending' 
+      console.log(trip)
+      trip.status === 'pending' 
         ? (domLocation = 'pending-trips', inputLocation = 'beforeend', className = "pending-cards card") 
         : (domLocation = 'aside-trip-list', inputLocation = "afterbegin", className = "card")
       let catalyst = document.getElementById(domLocation)
       catalyst.insertAdjacentHTML(inputLocation,
-        `<div id = "${trip.destination.location}" role="tabpanel"  tabindex="0" class = "${className}">
+        `<div id = "${trip.destinationID}" role="tabpanel"  tabindex="0" class = "${className}">
             <h4 id = "date-label"> When:</h4>
             <div id ="date" class = ""> ${trip.displayableDates}</div>
             <h4 id = "location-label"> Where:</h4>

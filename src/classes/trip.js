@@ -1,10 +1,10 @@
 import time from '../scripts/time';
 
 class Trip {
-  constructor(tripInfo, price, destination) {
+  constructor(tripInfo, currentUser, destination) {
     this.id = tripInfo.id;
-    this.userId = tripInfo.userID;
-    this.destination = tripInfo.destinationID;
+    this.userID = tripInfo.userID;
+    this.destinationID = tripInfo.destinationID;
     this.travelers = tripInfo.travelers;
     this.date = tripInfo.date;
     this.duration = tripInfo.duration;
@@ -32,7 +32,7 @@ class Trip {
  return time.getDate(this.date.split('/')).getTime()
  }
  setDuration() {
-    let date = time.getDate(this.date)
+    let date = time.getDate(this.date.split('/'))
     let duration = time.daysFromDate(date, this.duration)
     return [date, duration]
 }

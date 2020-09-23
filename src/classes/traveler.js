@@ -17,27 +17,35 @@ class Traveler {
       return acc
     }, [])
   }
-  addDestinationToUserTrips() {
-    this.trips.forEach(trip =>{
-      let destinationInfo = this.possibleDestinations.filter(desti => desti.id === trip.destination)
+  addDestinationToUserTrips(opt) {
+    let selectTrip = opt ? opt : this.trips;
+    let names;
+    selectTrip.forEach(trip =>{
+      let destinationInfo = this.possibleDestinations.filter(desti => desti.id === trip.destinationID)
       let lodging = trip.duration * destinationInfo[0].estimatedLodgingCostPerDay 
       let flight = destinationInfo[0].estimatedFlightCostPerPerson * trip.travelers
       trip.price = lodging + flight
       trip.destinationName = destinationInfo[0].destination
+      names = trip.destinationName
     })
+    return names
   }
   setTripTimes() {
     this.trips.forEach(trip =>{
       trip.sortTime = trip.setTime()
     })
   }
-  setTripDuration() {
-    this.trips.forEach(trip =>{
+  setTripDuration(opt) {
+    let selectTrip = opt ? opt : this.trips
+    let displayDates;
+    selectTrip.forEach(trip =>{
       let dates = trip.setDuration()
       trip.startDate = dates[0]
       trip.endDate = dates[1]
       trip.displayableDates = `${trip.startDate.toString().split('00')[0]} - ${trip.endDate.toString().split('00')[0]}`
+      displayDates = trip.displayableDates
     })
+    return displayDates
   }
   determineYearTrips() {
     let currentYear = new Date().toString().split(' ',  4)[3]
