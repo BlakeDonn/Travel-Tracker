@@ -18,14 +18,6 @@
 - Run `npm install`
 - Run `npm start`
 
-### Contribute
-
-- Create a new branch with `git checkout -b <new branch name>`
-- Open your text editor and add or remove functionalities to the site.
-- `git add` and `git commit -m "<your commit meessage>"` to save the changes to your local repository
-- `git push` your changes
-- Create a new pull request!
-
 #### Technologies used:
   * JavaScript ES6
   * Terminal
@@ -70,33 +62,20 @@
   
 ### On Dashboard load
 
-- 
+- You will be presented with all pending trips, years total of trip price, and upcoming/previous trips displayed on an aside.
+
 #### Booking a Trip
 
 - When A user fills out the form with start date, end date, amount of travelers, and a specific destination, they will be presented with an estimated cost
 - There pending trips will also be updated to reflect the new trip they have booked
-  <img src=https://i.imgur.com/xHDJwL7.png>
+  <img src=https://i.imgur.com/Nq49yCP.gif>
 
 
 ## Project Directions
-[whats-cooking-refactor specifications](https://frontend.turing.io/projects/module-2/refactor-tractor-wc.html)
+[travel-tracker](https://frontend.turing.io/projects/travel-tracker.html)
 
 
 ### Project Managers
 - [Bob Gu](https://github.com/BobGu)
 - [Travis Rollins](https://github.com/Kalikoze)
 
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[contributors-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[forks-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/network/members
-[stars-shield]: https://img.shields.io/github/stars/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[stars-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[issues-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/issues
-[license-shield]: https://img.shields.io/github/license/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[license-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
