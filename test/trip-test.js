@@ -3,7 +3,7 @@ import Trip from '../src/classes/trip';
 const expect = chai.expect;
 let trip, tripInfo, dummyDesti;
 
-describe('See if the tests are running', function() {
+describe('Trip', function() {
   beforeEach(() => {
     tripInfo = {
       "id": 6,
