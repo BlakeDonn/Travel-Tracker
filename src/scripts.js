@@ -11,8 +11,8 @@ const logIn = () => {
   //   let userPass = document.querySelectorAll('.login-data')
   //   let username = userPass[0].value
   //   let password = userPass[1].value
-    evaluateLogin('traveler25' , 'travel2020')
-  }
+  evaluateLogin('traveler25' , 'travel2020')
+}
 const evaluateLogin = (username, password) => {
   if (password === "travel2020") {
     travelFetch.dashboardInfo(+username.split('r')[2], 1) 
@@ -43,6 +43,7 @@ const formatTrips = (user) =>{
 }
 const createTrips = () => {
   domUpdates.populateCards(currentUser.trips.sort((a, b)=> a.sortTime - b.sortTime), "aside-trip-list", "beforeend")
+  calculateYearPrice()
 }
 // const generateTrip = (userTrips, destiTrips, opt) => {
 //   return userTrips.reduce((acc, cur)=>{
@@ -54,20 +55,12 @@ const createTrips = () => {
 //     return acc
 //   }, [])
 // }
-const determineYears = (allTrips) =>  {
-  let currentYear = new Date().toString().split(' ',  4)[3]
-  let yearMatches = allTrips.filter(trip =>{
-    return currentYear === trip.date.toString().split(' ',  4)[3] 
-    || currentYear === trip.duration.toString().split(' ',  4)[3]
-  })
-  yearMatches ? calculateYearPrice(yearMatches) : domUpdates.addPlaceholder();
-}
-const calculateYearPrice = (trips) => {
-  let total = trips.reduce((yearPrice, trip)=>{
+const calculateYearPrice = () => {
+  let total = currentUser.trips.reduce((yearPrice, trip)=>{
     return   yearPrice += trip.price
   }, 0)
   total = total + ((10 / 100) * total)
-  domUpdates.populateYearPrice({tripAmount: trips.length, totalPrice: total.toFixed(2)})
+  domUpdates.populateYearPrice({tripAmount: currentUser.trips.length, totalPrice: total.toFixed(2)})
   document.getElementById("destination-selector").addEventListener('input', calculateData)
 }
 const calculateData = () =>{

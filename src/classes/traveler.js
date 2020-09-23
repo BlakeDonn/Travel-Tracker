@@ -39,6 +39,10 @@ class Traveler {
       trip.displayableDates = `${trip.startDate.toString().split('00')[0]} - ${trip.endDate.toString().split('00')[0]}`
     })
   }
+  determineYearTrips() {
+    let currentYear = new Date().toString().split(' ',  4)[3]
+    return  this.Trips.filter(trip => currentYear === trip.date().split('/ ',  1)[0])
+  }
 }
 // determineTripCost(userTrips, destiTrips, opt) {
   //   this.price = userTrips.reduce((acc, cur )=>{
