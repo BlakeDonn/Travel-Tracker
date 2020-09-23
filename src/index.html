@@ -28,11 +28,11 @@
           <section id = "book-new-trip" class = card>
             <h2 id = "trip-title">Book A Trip</h2>
             <label for = "start-date-input"class = "form-tag">Select A Start Date</label>
-            <input type="date" id="start-date-input" class = "form-input" placeholder="Please select A Start Date" data-input>
+            <input type="date" id="start-date-input" min = "2020-10-01" class = "form-input" placeholder="Please select A Start Date" data-input>
             <label for = "return-date-input" class = "form-tag">Select A Return Date</label>
-            <input type="date" id="return-date-input" class = "form-input" placeholder="Please select A Return Date" data-input>
+            <input type="date" id="return-date-input" min = "2020-10-02" class = "form-input" placeholder="Please select A Return Date" data-input >
             <label for = "traveler-input" class = "form-tag">Party Size</label>
-            <input type="number" id="traveler-input" class = "form-input" placeholder="How many Travelers?" data-input>
+            <input type="number"  id="traveler-input" min = "1"  max = "20"class = "form-input" placeholder="How many Travelers?" data-input>
             <label for = "destination-selector" class = "form-tag">Pick A Destination!</label>
             <input list="destination-dropdown" id="destination-selector" name="destinations" class = "form-input" placeholder = "Click To See Destination list">
                 <datalist id="destination-dropdown">

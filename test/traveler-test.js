@@ -1,7 +1,7 @@
 import chai from 'chai';
 import Traveler from '../src/classes/traveler';
 const expect = chai.expect;
-let traveler, travelerInfo, tripInfo;
+let traveler, travelerInfo;
 
 describe('See if the tests are running', function() {
   beforeEach(() => {

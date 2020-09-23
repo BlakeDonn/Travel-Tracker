@@ -22,8 +22,8 @@ let domUpdates = {
     footerElement.insertAdjacentHTML("beforeend", 
       `<div id="total-trips" role="tabpanel" tabindex="0">
         <section id = "yearly-cost-summary" class = "card">    
-        <h2 id ="yearly-number-of-trips">You went on ${obj.tripAmount} trips this year!</h2>
-        <h2 id ="yearly-total-price">Total cost for all trips: $${obj.totalPrice}</h2>
+        <h3 id ="yearly-number-of-trips">You went on ${obj.tripAmount} trips this year!</h3>
+        <h4 id ="yearly-total-price">Total cost for all trips: $${obj.totalPrice}</h4>
         </section>
         </div>
     `)
@@ -50,7 +50,7 @@ let domUpdates = {
     let total = +price + ((10 / 100) * +price)
     let target1 = document.getElementById('trip-title')
     target1.insertAdjacentHTML("beforeend", 
-      `<h3 id ="yearly-number-of-trips">Your estimated cost: ${total.toFixed(2)} (agency fee included)</h3`
+      `<h4 id ="yearly-number-of-trips">Your estimated cost: ${total.toFixed(2)} (agency fee included)</h4>`
     )
     return price
   },

@@ -1,6 +1,5 @@
 import chai from 'chai';
 import Trip from '../src/classes/trip';
-import time from '../src/scripts/time';
 const expect = chai.expect;
 let trip, tripInfo;
 
