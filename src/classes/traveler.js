@@ -17,12 +17,18 @@ class Traveler {
       return acc
     }, [])
   }
-  addCostToUserTrips() {
+  addDestinationToUserTrips() {
     this.trips.forEach(trip =>{
       let destinationInfo = this.possibleDestinations.filter(desti => desti.id === trip.destination)
       let lodging = trip.duration * destinationInfo[0].estimatedLodgingCostPerDay 
       let flight = destinationInfo[0].estimatedFlightCostPerPerson * trip.travelers
       trip.price = lodging + flight
+      trip.destinationName = destinationInfo[0].destination
+    })
+  }
+  setTripTimes() {
+    this.trips.forEach(trip =>{
+      
     })
   }
 }

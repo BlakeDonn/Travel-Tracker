@@ -27,7 +27,7 @@ const startUp = (user) => {
   dashboardFetch(user)
     .then(values => currentUser = new Traveler(values))
     .then(value => formatTrips(value))
-    .then(() => domUpdates.populateDestinations(currentUser.destinatio))
+    .then(() => domUpdates.populateDestinations(currentUser.possibleDestinations))
 }
 const dashboardFetch = (user) =>{
   return travelFetch.dashboardInfo(user.id)
@@ -36,10 +36,12 @@ const dashboardFetch = (user) =>{
 }
 const formatTrips = (user) =>{
   currentUser.formatTrips(user)
-  currentUser.addCostToUserTrips()
+  currentUser.addDestinationToUserTrips()
+  currentUser.setTripTimes()
+  // createTrips()
 }
-const createTrips = (userTrips, destiTrips) => {
-  let allTrips = generateTrip(userTrips, destiTrips)
+const createTrips = () => {
+  console.log(currentUser.trips)
   domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time), "aside-trip-list", "beforeend")
   determineYears(allTrips)
 }
