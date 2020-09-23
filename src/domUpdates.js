@@ -55,9 +55,9 @@ let domUpdates = {
     return price
   },
   toggleHidden() {
-    document.querySelector('.grid-container').classList.toggle('hidden')
-    document.querySelector("body").classList.remove("login-background")
-    document.querySelector(".login").remove()
+    // document.querySelector('.grid-container').classList.toggle('hidden')
+    // document.querySelector("body").classList.remove("login-background")
+    // document.querySelector(".login").remove()
   }
 }
 
