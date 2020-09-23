@@ -47,19 +47,14 @@ class Traveler {
     })
     return displayDates
   }
+  specifyTripStatus() { 
+    this.trips.forEach(trip =>{
+      trip.status = trip.determineTripStatus()
+    })
+  }
   determineYearTrips() {
     let currentYear = new Date().toString().split(' ',  4)[3]
     return  this.Trips.filter(trip => currentYear === trip.date().split('/ ',  1)[0])
   }
 }
-// determineTripCost(userTrips, destiTrips, opt) {
-  //   this.price = userTrips.reduce((acc, cur )=>{
-  //     let foundDesti = opt ?  destiTrips : destiTrips.find(x => x.id === cur.destinationID)
-  //     let lodgingCost = cur.duration * foundDesti.estimatedLodgingCostPerDay
-  //     let flightCost = cur.travelers * foundDesti.estimatedFlightCostPerPerson
-  //     let price = lodgingCost + flightCost
-  //     !opt ? : acc.push(price)
-  //     return acc
-  //   }, [])
-  //   })
 export default Traveler

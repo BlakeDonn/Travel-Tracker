@@ -11,20 +11,9 @@ class Trip {
     this.status = tripInfo.status || 'pending';
     this.suggestedActivities = [];
   }
-  // determineTripCost(userTrips, destiTrips, opt) {
-  //   this.price = userTrips.reduce((acc, cur )=>{
-  //     let foundDesti = opt ?  destiTrips : destiTrips.find(x => x.id === cur.destinationID)
-  //     let lodgingCost = cur.duration * foundDesti.estimatedLodgingCostPerDay
-  //     let flightCost = cur.travelers * foundDesti.estimatedFlightCostPerPerson
-  //     let price = lodgingCost + flightCost
-  //     !opt ? : acc.push(price)
-  //     return acc
-  //   }, [])
-  //   })
   determineTripStatus() {
-    this.status = time.isBetween(tripInfo.status, this.date, this.duration);
+    return time.isBetween(this.status, this.startDate, this.endDate)
   }
-  
   getDate () {
     this.date.getTime();
   }

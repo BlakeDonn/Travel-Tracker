@@ -2,7 +2,7 @@ let domUpdates = {
   populateCards(trips, domLocation, inputLocation) {
     trips.forEach(trip =>{
       let className;
-      console.log(trip)
+
       trip.status === 'pending' 
         ? (domLocation = 'pending-trips', inputLocation = 'beforeend', className = "pending-cards card") 
         : (domLocation = 'aside-trip-list', inputLocation = "afterbegin", className = "card")
@@ -56,9 +56,9 @@ let domUpdates = {
     return price
   },
   toggleHidden() {
-    // document.querySelector('.grid-container').classList.toggle('hidden')
-    // document.querySelector("body").classList.remove("login-background")
-    // document.querySelector(".login").remove()
+    document.querySelector('.grid-container').classList.toggle('hidden')
+    document.querySelector("body").classList.remove("login-background")
+    document.querySelector(".login").remove()
   }
 }
 

@@ -7,11 +7,12 @@ import Traveler from './classes/traveler';
 let currentUser; 
 
 const logIn = () => {
-  // document.getElementById('login-input').addEventListener('click', function() {
-  //   let userPass = document.querySelectorAll('.login-data')
-  //   let username = userPass[0].value
-  //   let password = userPass[1].value
-  evaluateLogin('traveler22' , 'travel2020')
+  document.getElementById('login-input').addEventListener('click', function() {
+    let userPass = document.querySelectorAll('.login-data')
+    let username = userPass[0].value
+    let password = userPass[1].value
+    evaluateLogin(username , password)
+  })
 }
 const evaluateLogin = (username, password) => {
   if (password === "travel2020") {
@@ -39,6 +40,7 @@ const formatTrips = (user) =>{
   currentUser.addDestinationToUserTrips()
   currentUser.setTripTimes()
   currentUser.setTripDuration()
+  currentUser.specifyTripStatus()
   createTrips()
 }
 const createTrips = () => {
@@ -54,17 +56,6 @@ const calculateYearPrice = () => {
   domUpdates.populateYearPrice({tripAmount: currentUser.trips.length, totalPrice: total.toFixed(2)})
   document.getElementById("destination-selector").addEventListener('input', calculateData)
 }
-// const generateTrip = (userTrips, destiTrips, opt) => {
-//   return userTrips.reduce((acc, cur)=>{
-//     let foundDesti = opt ?  destiTrips : destiTrips.find(x => x.id === cur.destinationID)
-//     let lodgingCost = cur.duration * foundDesti.estimatedLodgingCostPerDay
-//     let flightCost = cur.travelers * foundDesti.estimatedFlightCostPerPerson
-//     let price = lodgingCost + flightCost
-//     !opt ? acc.push(new Trip(cur, price, foundDesti)) : acc.push(price)
-//     return acc
-//   }, [])
-// }
-
 const calculateData = () =>{
   if (domUpdates.checkData()) {
     calculatePriceOfTrip(domUpdates.checkData())
