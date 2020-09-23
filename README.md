@@ -1,7 +1,3 @@
-[![Contributors][contributors-shield]](https://github.com/Atos20/what-s-cooking-refactor/graphs/contributors)
-[![Forks][forks-shield]](https://github.com/Atos20/what-s-cooking-refactor/network/members)
-[![Issues][issues-shield]](https://github.com/Atos20/what-s-cooking-refactor/issues)
-
 ## Travel-Tracker Solo Project
 
 ## Contributors
