@@ -28,7 +28,15 @@ class Traveler {
   }
   setTripTimes() {
     this.trips.forEach(trip =>{
-      
+      trip.sortTime = trip.setTime()
+    })
+  }
+  setTripDuration() {
+    this.trips.forEach(trip =>{
+      let dates = trip.setDuration()
+      trip.startDate = dates[0]
+      trip.endDate = dates[1]
+      trip.displayableDates = `${trip.startDate.toString().split('00')[0]} - ${trip.endDate.toString().split('00')[0]}`
     })
   }
 }

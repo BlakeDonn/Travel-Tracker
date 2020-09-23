@@ -38,23 +38,22 @@ const formatTrips = (user) =>{
   currentUser.formatTrips(user)
   currentUser.addDestinationToUserTrips()
   currentUser.setTripTimes()
-  // createTrips()
+  currentUser.setTripDuration()
+  createTrips()
 }
 const createTrips = () => {
-  console.log(currentUser.trips)
-  domUpdates.populateCards(allTrips.sort((a, b)=> a.time - b.time), "aside-trip-list", "beforeend")
-  determineYears(allTrips)
+  domUpdates.populateCards(currentUser.trips.sort((a, b)=> a.sortTime - b.sortTime), "aside-trip-list", "beforeend")
 }
-const generateTrip = (userTrips, destiTrips, opt) => {
-  return userTrips.reduce((acc, cur)=>{
-    let foundDesti = opt ?  destiTrips : destiTrips.find(x => x.id === cur.destinationID)
-    let lodgingCost = cur.duration * foundDesti.estimatedLodgingCostPerDay
-    let flightCost = cur.travelers * foundDesti.estimatedFlightCostPerPerson
-    let price = lodgingCost + flightCost
-    !opt ? acc.push(new Trip(cur, price, foundDesti)) : acc.push(price)
-    return acc
-  }, [])
-}
+// const generateTrip = (userTrips, destiTrips, opt) => {
+//   return userTrips.reduce((acc, cur)=>{
+//     let foundDesti = opt ?  destiTrips : destiTrips.find(x => x.id === cur.destinationID)
+//     let lodgingCost = cur.duration * foundDesti.estimatedLodgingCostPerDay
+//     let flightCost = cur.travelers * foundDesti.estimatedFlightCostPerPerson
+//     let price = lodgingCost + flightCost
+//     !opt ? acc.push(new Trip(cur, price, foundDesti)) : acc.push(price)
+//     return acc
+//   }, [])
+// }
 const determineYears = (allTrips) =>  {
   let currentYear = new Date().toString().split(' ',  4)[3]
   let yearMatches = allTrips.filter(trip =>{

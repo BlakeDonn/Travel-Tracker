@@ -24,24 +24,17 @@ class Trip {
   determineTripStatus() {
     this.status = time.isBetween(tripInfo.status, this.date, this.duration);
   }
-  attachDestination() {
-    this.destination = {
-      location: destination.destination, image: destination.image, alt: destination.alt
-    }
-  }
-  attachDurationTime() {
-    time.daysFromDate(this.date, tripInfo.duration)
-  }
+  
   getDate () {
     this.date.getTime();
   }
-  calculateDate() {
-    // time.getDate(tripInfo.date.split('/');
-  }
-  calculateCost(value) {
-    console.log(value)
-
-  }
+ setTime() {
+ return time.getDate(this.date.split('/')).getTime()
+ }
+ setDuration() {
+    let date = time.getDate(this.date)
+    let duration = time.daysFromDate(date, this.duration)
+    return [date, duration]
 }
-
+}
 export default Trip
