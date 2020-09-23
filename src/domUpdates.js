@@ -3,15 +3,18 @@ let domUpdates = {
     trips.forEach(trip =>{
       let className;
       trip.tripStatus === 'pending' 
-      ? (domLocation = 'pending-trips', inputLocation = 'beforeend', className = "overviewcard") 
-      : (domLocation = 'aside-trip-list', inputLocation = "afterbegin", className = "card")
+        ? (domLocation = 'pending-trips', inputLocation = 'beforeend') 
+        : (domLocation = 'aside-trip-list', inputLocation = "afterbegin")
       let catalyst = document.getElementById(domLocation)
       let date = trip.date.toString().split('00')[0]
       let duration = trip.duration.toString().split('00')[0]
       catalyst.insertAdjacentHTML(inputLocation,
-        `<div id = "${trip.destination.location}" class = "${className}">
-            <div id ="date" class = "">When: ${date} - ${duration}</div>
-            <div id ="class = class=""destination">Where: ${trip.destination.location}</div>
+        `<div id = "${trip.destination.location}" class = "card">
+              When:
+            <div id ="date" class = ""> ${date} - ${duration}</div>
+            <br>
+              Where:
+            <div id ="class = class=""destination">${trip.destination.location}</div>
         `)
     })
   },
