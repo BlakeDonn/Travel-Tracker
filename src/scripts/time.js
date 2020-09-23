@@ -2,9 +2,9 @@ let time = {
   getDate(date) {
     return new Date(date[0], date[1] - 1, date[2])
   },
-  daysFromDate(date, days) {
+  daysFromDate(date, days, opt) {
     let millisecondsFromThen = days * 24 * 60 * 60 * 1000;
-    let thisDate = new Date(date.getTime() + millisecondsFromThen)
+    let thisDate = opt ? new Date(date.getTime() - millisecondsFromThen) : new Date(date.getTime() + millisecondsFromThen);
     return thisDate
   },
   isBetween(status, testDate, endDate) {
