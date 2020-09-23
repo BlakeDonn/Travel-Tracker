@@ -14,7 +14,7 @@ const startUp = () => {
     .then(() => domUpdates.populateDestinations(destiNames))
 }
 const dashboardFetch = () =>{
-  return travelFetch.dashboardInfo(8)
+  return travelFetch.dashboardInfo(10)
     .then(promises => Promise.all(promises.map(response => response.json())))  
     .then(values => values[1].trips.filter(x => x.userID === values[0].id))
 }
@@ -82,7 +82,6 @@ const calculatePriceOfTrip = (combinedInputs) => {
   let tripInfo = [{duration: duration, travelers: +combinedInputs[2]}]
 }
 const setUpPost = (combinedInputs, duration, value, destination) =>{
-  console.log(destination)
   document.getElementById('destination-submit').addEventListener('click', function() {
     let postInfo = {
       id: 6, 
