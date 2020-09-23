@@ -3,8 +3,6 @@
 ## Contributors
   - [Blake Donn](https://github.com/BlakeDonn)
 
-## Context
-
 ### Set up
 * On the top right corner of this page, click the **Fork** button.
 - Clone the repository to your computer `git clone <URL>`
