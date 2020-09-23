@@ -1,9 +1,10 @@
 let travelFetch = {
-  dashboardInfo(userId) {
-    return Promise.all([
-      fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${userId}`),
-      fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips')
-    ])
+  dashboardInfo(userId, opt) {
+    return opt ? fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${userId}`) 
+      : Promise.all([
+        fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${userId}`),
+        fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips')
+      ])
   },
   tripInfo() {
     return fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips')

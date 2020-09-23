@@ -1,6 +1,6 @@
 
 class Traveler {
-  constructor(userInfo,) {
+  constructor(userInfo) {
     this.userInfo = 
     typeof(userInfo.id) === 'number'
       ?  typeof(userInfo.name) === 'string' && userInfo.name.split(' ').length === 2
