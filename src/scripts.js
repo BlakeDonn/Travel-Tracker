@@ -18,8 +18,7 @@ const evaluateLogin = (username, password) => {
       .then(response => response.status === 200 ? response.json() : alert('Invalid Username'))
       .then(value=> startUp(value))
       .then(() => domUpdates.toggleHidden())
-  }
-  else {
+  } else {
     alert('Invalid Password')
   }
 }
@@ -52,7 +51,7 @@ const createTrips = (userTrips, destiTrips) => {
   determineYears(allTrips)
 }
 const generateTrip = (userTrips, destiTrips, opt) => {
-  return userTrips.reduce((acc, cur, i)=>{
+  return userTrips.reduce((acc, cur)=>{
     let foundDesti = opt ?  destiTrips : destiTrips.find(x => x.id === cur.destinationID)
     let lodgingCost = cur.duration * foundDesti.estimatedLodgingCostPerDay
     let flightCost = cur.travelers * foundDesti.estimatedFlightCostPerPerson
@@ -92,7 +91,7 @@ const calculatePriceOfTrip = (combinedInputs) => {
     .then(value => setUpPost(combinedInputs, duration, value, destination))
   let start =  time.getDate(combinedInputs[0].split('-'));
   let end = time.getDate(combinedInputs[1].split('-'));
-  let duration = (end.getTime() - start.getTime()) / (1000*60*60*24)
+  let duration = (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
   let tripInfo = [{duration: duration, travelers: +combinedInputs[2]}]
 }
 const setUpPost = (combinedInputs, duration, value, destination) =>{
