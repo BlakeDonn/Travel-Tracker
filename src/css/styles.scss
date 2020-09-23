@@ -1,4 +1,7 @@
 @mixin cardStyles {
   font: $content-font;
-  display: flex;
+  border-radius: 25px;
+}
+@mixin titleStyles {
+  font: $title-font;
 }

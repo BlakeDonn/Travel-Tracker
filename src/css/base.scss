@@ -4,31 +4,27 @@
 .grid-container {
   display: grid;
   grid-template-columns: .35fr 1fr;
-  grid-template-rows: 50px 1fr  1fr;;
+  grid-template-rows: 50px 1.25fr;
   grid-template-areas:
     "aside header"
-    "aside main"
     "aside main";
   height: 100vh;
 }
 .header {
   grid-area: header;
-  background-color: #648ca6;
 }
 
 .aside {
   grid-area: aside;
-  background-color: #394263;
 }
 
 .main {
   grid-area: main;
-  background-color: #8fd4d9;
+  background-color: $main-back-color;
 }
 
 .footer {
   grid-area: footer;
-  background-color: #648ca6;
 }
 
 .header, .footer {
@@ -43,7 +39,7 @@
   display: flex; 
   flex-direction: column;
   grid-area: aside;
-  background-color: #394263;
+  background-color: $aside-color;
 }
 .aside-list {
   display: grid;
@@ -51,27 +47,28 @@
   padding: 10;
   margin-top: 85px;
   list-style-type: none;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 .main-header {
   display: flex;
   justify-content: space-between;
   margin: 20px;
   padding: 20px;
-  color: slategray;
 }
 .main-overview {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(265px, 2fr)); 
   grid-gap: 20px;
-  height: 50vh;
+  overflow: overlay;
 }
 .main-cards {
+  @include cardStyles;
   column-count: 2;
   column-gap: 20px;
   margin: 20px;
 }
 .card {
+  @include cardStyles;
   display: grid;
   justify-self: center;
   width: 85%;
@@ -80,4 +77,8 @@
   -webkit-column-break-inside: avoid;
   padding: 24px;
   box-sizing: border-box;
+}
+.pending-cards {
+  margin: 0;
+  padding: 10px;
 }
