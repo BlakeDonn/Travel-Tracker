@@ -1,15 +1,29 @@
 import time from '../scripts/time';
 
 class Trip {
-  constructor(tripInfo, price, destination) {
-    this.price = price;
-    this.date = time.getDate(tripInfo.date.split('/'));
-    this.time = this.date.getTime();
-    this.duration = time.daysFromDate(this.date, tripInfo.duration);
-    this.tripStatus = time.isBetween(tripInfo.status, this.date, this.duration);
-    this.destination = {
-      location: destination.destination, image: destination.image, alt: destination.alt
-    }
+  constructor(tripInfo, currentUser, destination) {
+    this.id = tripInfo.id;
+    this.userID = tripInfo.userID;
+    this.destinationID = tripInfo.destinationID;
+    this.travelers = tripInfo.travelers;
+    this.date = tripInfo.date;
+    this.duration = tripInfo.duration;
+    this.status = tripInfo.status || 'pending';
+    this.suggestedActivities = [];
   }
+  determineTripStatus() {
+    return time.isBetween(this.status, this.startDate, this.endDate)
+  }
+  getDate () {
+    this.date.getTime();
+  }
+ setTime() {
+ return time.getDate(this.date.split('/')).getTime()
+ }
+ setDuration() {
+    let date = time.getDate(this.date.split('/'))
+    let duration = time.daysFromDate(date, this.duration)
+    return [date, duration]
+}
 }
 export default Trip

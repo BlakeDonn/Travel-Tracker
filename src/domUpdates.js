@@ -2,18 +2,19 @@ let domUpdates = {
   populateCards(trips, domLocation, inputLocation) {
     trips.forEach(trip =>{
       let className;
-      trip.tripStatus === 'pending' 
+
+      trip.status === 'pending' 
         ? (domLocation = 'pending-trips', inputLocation = 'beforeend', className = "pending-cards card") 
         : (domLocation = 'aside-trip-list', inputLocation = "afterbegin", className = "card")
       let catalyst = document.getElementById(domLocation)
-      let date = trip.date.toString().split('00')[0]
-      let duration = trip.duration.toString().split('00')[0]
       catalyst.insertAdjacentHTML(inputLocation,
-        `<div id = "${trip.destination.location}" role="tabpanel"  tabindex="0" class = "${className}">
+        `<div id = "${trip.destinationID}" role="tabpanel"  tabindex="0" class = "${className}">
             <h4 id = "date-label"> When:</h4>
-            <div id ="date" class = ""> ${date} - ${duration}</div>
+            <div id ="date" class = ""> ${trip.displayableDates}</div>
             <h4 id = "location-label"> Where:</h4>
-            <div id ="class = class=""destination">${trip.destination.location}</div>
+            <div id ="class = class=""destination">${trip.destinationName}</div>
+            <h4 id = "location-label"> Staus:</h4>
+            <div id ="class = class=""destination">${trip.status}</div>
         `)
     })
   },
@@ -32,7 +33,7 @@ let domUpdates = {
     let destinationDropdown = document.getElementById('destination-dropdown')
     let sorted = destinations.sort()
     let listItems = sorted.reduce((allDest, dest)=>{
-      return allDest += `<option id = "${dest[0], dest[1]}" value = "${dest[0]} ${dest[1]}" class = "${dest[0].split(',').reverse()[0]}"$></br>`
+      return allDest += `<option id = "${dest.destination, dest.id}" value = "${dest.destination} ${dest.id}" $></br>`
     },'')
     destinationDropdown.insertAdjacentHTML('afterbegin', listItems)
   },
