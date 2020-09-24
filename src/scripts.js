@@ -54,7 +54,7 @@ const calculateYearPrice = () => {
     return   yearPrice += trip.price
   }, 0)
   total = total + ((10 / 100) * total)
-  domUpdates.populateYearPrice({tripAmount: currentUser.trips.length, totalPrice: total.toFixed(2)})
+  domUpdates.populateYearPrice({tripAmount: thisYearTrips.length, totalPrice: total.toFixed(2)})
   document.getElementById("destination-selector").addEventListener('input', calculateData)
 }
 const calculateData = () =>{

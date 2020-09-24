@@ -55,7 +55,10 @@ class Traveler {
   }
   determineYearTrips() {
     let currentYear = new Date().toString().split(' ',  4)[3]
-    return  this.trips.filter(trip => currentYear === trip.date.split('/', 1)[0])
+    return  this.trips.filter(trip => {
+      console.log(trip.status)
+      return (currentYear === trip.date.split('/', 1)[0] && trip.status !== 'pending')
+    })
   }
 }
 export default Traveler
