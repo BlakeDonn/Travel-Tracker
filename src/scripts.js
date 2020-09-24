@@ -11,7 +11,7 @@ const logIn = () => {
     let userPass = document.querySelectorAll('.login-data')
     let username = userPass[0].value
     let password = userPass[1].value
-    evaluateLogin(username , password)
+    evaluateLogin(username, password)
   })
 }
 const evaluateLogin = (username, password) => {
@@ -38,18 +38,19 @@ const dashboardFetch = (user) =>{
 const formatTrips = (user) =>{
   currentUser.formatTrips(user)
   currentUser.addDestinationToUserTrips()
-  currentUser.setTripTimes()
+  currentUser.sortTrips()
   currentUser.setTripDuration()
   currentUser.specifyTripStatus()
   createTrips()
 }
 const createTrips = () => {
-  domUpdates.populateCards(currentUser.trips.sort((a, b)=> a.sortTime - b.sortTime), "aside-trip-list", "beforeend")
+  domUpdates.populateCards(currentUser.trips, "aside-trip-list", "beforeend")
   calculateYearPrice()
   calculateData()
 }
 const calculateYearPrice = () => {
-  let total = currentUser.trips.reduce((yearPrice, trip)=>{
+  let thisYearTrips = currentUser.determineYearTrips()
+  let total = thisYearTrips.reduce((yearPrice, trip)=>{
     return   yearPrice += trip.price
   }, 0)
   total = total + ((10 / 100) * total)
@@ -90,7 +91,6 @@ const setUpPost = (tripToPost) =>{
   })
 }
 const postTrip = (postInfo) =>{
-  console.log(postInfo)
   travelFetch.tripInfo()
     .then(response => response.json())
     .then(value => postInfo.id = +value.trips.length + 1)

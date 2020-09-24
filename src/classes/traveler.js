@@ -7,7 +7,7 @@ class Traveler {
       ?  typeof(userInfo[0].name) === 'string' && userInfo[0].name.split(' ').length === 2
         ?  typeof(userInfo[0].travelerType) === 'string' && 'relaxer, thrill-seeker, history buff, foodie, photographer'.includes(userInfo[0].travelerType)
           ? userInfo[0] : null : null : null;
-    this.trips = userInfo[1];
+    this.trips = userInfo[1] || [];
     this.possibleDestinations = userInfo[2];
   }
   formatTrips(trips) {
@@ -30,10 +30,11 @@ class Traveler {
     })
     return names
   }
-  setTripTimes() {
+  sortTrips() {
     this.trips.forEach(trip =>{
       trip.sortTime = trip.setTime()
     })
+    this.trips.sort((a, b)=> a.sortTime - b.sortTime)
   }
   setTripDuration(opt) {
     let selectTrip = opt ? opt : this.trips
@@ -54,7 +55,7 @@ class Traveler {
   }
   determineYearTrips() {
     let currentYear = new Date().toString().split(' ',  4)[3]
-    return  this.Trips.filter(trip => currentYear === trip.date().split('/ ',  1)[0])
+    return  this.trips.filter(trip => currentYear === trip.date.split('/', 1)[0])
   }
 }
 export default Traveler

@@ -1,7 +1,7 @@
 import time from '../scripts/time';
 
 class Trip {
-  constructor(tripInfo, currentUser, destination) {
+  constructor(tripInfo) {
     this.id = tripInfo.id;
     this.userID = tripInfo.userID;
     this.destinationID = tripInfo.destinationID;
@@ -14,16 +14,13 @@ class Trip {
   determineTripStatus() {
     return time.isBetween(this.status, this.startDate, this.endDate)
   }
-  getDate () {
-    this.date.getTime();
+  setTime() {
+    return time.getDate(this.date.split('/')).getTime()
   }
- setTime() {
- return time.getDate(this.date.split('/')).getTime()
- }
- setDuration() {
+  setDuration() {
     let date = time.getDate(this.date.split('/'))
     let duration = time.daysFromDate(date, this.duration)
     return [date, duration]
-}
+  }
 }
 export default Trip
