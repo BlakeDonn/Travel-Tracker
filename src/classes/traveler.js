@@ -7,7 +7,7 @@ class Traveler {
       ?  typeof(userInfo[0].name) === 'string' && userInfo[0].name.split(' ').length === 2
         ?  typeof(userInfo[0].travelerType) === 'string' && 'relaxer, thrill-seeker, history buff, foodie, photographer'.includes(userInfo[0].travelerType)
           ? userInfo[0] : null : null : null;
-    this.trips = userInfo[1];
+    this.trips = userInfo[1] || [];
     this.possibleDestinations = userInfo[2];
   }
   formatTrips(trips) {

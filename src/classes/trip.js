@@ -17,13 +17,13 @@ class Trip {
   getDate () {
     this.date.getTime();
   }
- setTime() {
- return time.getDate(this.date.split('/')).getTime()
- }
- setDuration() {
+  setTime() {
+    return time.getDate(this.date.split('/')).getTime()
+  }
+  setDuration() {
     let date = time.getDate(this.date.split('/'))
     let duration = time.daysFromDate(date, this.duration)
     return [date, duration]
-}
+  }
 }
 export default Trip
