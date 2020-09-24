@@ -30,10 +30,11 @@ class Traveler {
     })
     return names
   }
-  setTripTimes() {
+  sortTrips() {
     this.trips.forEach(trip =>{
       trip.sortTime = trip.setTime()
     })
+    this.trips.sort((a, b)=> a.sortTime - b.sortTime)
   }
   setTripDuration(opt) {
     let selectTrip = opt ? opt : this.trips

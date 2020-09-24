@@ -38,13 +38,13 @@ const dashboardFetch = (user) =>{
 const formatTrips = (user) =>{
   currentUser.formatTrips(user)
   currentUser.addDestinationToUserTrips()
-  currentUser.setTripTimes()
+  currentUser.sortTrips()
   currentUser.setTripDuration()
   currentUser.specifyTripStatus()
   createTrips()
 }
 const createTrips = () => {
-  domUpdates.populateCards(currentUser.trips.sort((a, b)=> a.sortTime - b.sortTime), "aside-trip-list", "beforeend")
+  domUpdates.populateCards(currentUser.trips, "aside-trip-list", "beforeend")
   calculateYearPrice()
   calculateData()
 }
