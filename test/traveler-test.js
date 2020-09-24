@@ -4,7 +4,7 @@ import Trip from '../src/classes/trip';
 const expect = chai.expect;
 let traveler, travelerInfo, trip, tripInfo;
 
-describe.only('Traveler', function() {
+describe('Traveler', function() {
   beforeEach(() => {
     travelerInfo = [{
       "id": 6,
@@ -84,7 +84,7 @@ describe.only('Traveler', function() {
       expect(traveler.possibleDestinations).to.eql(travelerInfo[2])
     });
   });
-  describe.only('Method Tests', () => {
+  describe('Method Tests', () => {
     it('Should format provided trips into trip classes', () => {
       traveler.formatTrips()
       expect(traveler.trips[0]).to.be.an.instanceof(Trip)
@@ -135,6 +135,12 @@ describe.only('Traveler', function() {
       expect(traveler.trips[0].status).to.equal('pending')
       expect(traveler.trips[1].status).to.equal('upcoming')
       expect(traveler.trips[2].status).to.equal('past')
+    });
+
+    it('Should filter trips for this year', () => {
+      traveler.formatTrips()
+      traveler.setTripDuration()
+      expect(traveler.determineYearTrips()[0].date).to.equal('2020/10/18')
     });
   });
 });
