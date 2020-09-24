@@ -49,7 +49,8 @@ const createTrips = () => {
   calculateData()
 }
 const calculateYearPrice = () => {
-  let total = currentUser.trips.reduce((yearPrice, trip)=>{
+  let thisYearTrips = currentUser.determineYearTrips()
+  let total = thisYearTrips.reduce((yearPrice, trip)=>{
     return   yearPrice += trip.price
   }, 0)
   total = total + ((10 / 100) * total)
