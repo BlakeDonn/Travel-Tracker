@@ -11,7 +11,7 @@ const logIn = () => {
     let userPass = document.querySelectorAll('.login-data')
     let username = userPass[0].value
     let password = userPass[1].value
-    evaluateLogin(username , password)
+    evaluateLogin(username, password)
   })
 }
 const evaluateLogin = (username, password) => {
@@ -91,7 +91,6 @@ const setUpPost = (tripToPost) =>{
   })
 }
 const postTrip = (postInfo) =>{
-  console.log(postInfo)
   travelFetch.tripInfo()
     .then(response => response.json())
     .then(value => postInfo.id = +value.trips.length + 1)

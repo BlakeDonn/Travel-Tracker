@@ -2,7 +2,7 @@ import chai from 'chai';
 import Traveler from '../src/classes/traveler';
 import Trip from '../src/classes/trip';
 const expect = chai.expect;
-let traveler, travelerInfo, trip, tripInfo;
+let traveler, travelerInfo;
 
 describe('Traveler', function() {
   beforeEach(() => {
